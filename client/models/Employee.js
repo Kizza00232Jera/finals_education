@@ -18,7 +18,7 @@ const employeeSchema = new mongoose.Schema({
         required: true
     },
     employeeRole: [{
-        type: Roles,
+        type: String,
         default: "Employee"
     }],
     employeeDepartment: [{
