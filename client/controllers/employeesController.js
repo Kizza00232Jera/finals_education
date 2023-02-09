@@ -1,9 +1,8 @@
 const Employee = require('../models/Employee')
-const Event = require('../models/Event')
-const Role = require('../models/Role')
+//const Event = require('../models/Event')
 
 const asyncHandler = require('express-async-handler')
-const bcrypt = require('bcrypt')
+//const bcrypt = require('bcrypt')
 
 
 // @desc Get all employees
@@ -26,10 +25,10 @@ const getAllEmployees = asyncHandler(async (req, res) => {
 // @route POST /employees
 // @access Private
 const createNewEmployee = asyncHandler(async (req, res) => {
-    const { employeeName, employeeSurname, employeeEmail, employeePassword, employeeDepartment, employeeFund, employeeRole } = req.body
+    const { employeeName, employeeSurname, employeeEmail, employeePassword, employeeRole, employeeDepartment, employeeFund, employeeSpent, employeeBudget  } = req.body
 
     // Confirm data
-    if (!employeeName || !employeeSurname || !employeeEmail || !Array.isArray(employeeDepartment) || !employeeDepartment.length || !employeeFund || !employeePassword || !Array.isArray(employeeRole) || !employeeRole.length) {
+    if (!employeeName || !employeeSurname || !employeeEmail || !employeePassword|| !Array.isArray(employeeDepartment) || !employeeDepartment.length || !employeeFund || !employeeSpent ||!employeeBudget || !Array.isArray(employeeRole) || !employeeRole.length) {
         return res.status(400).json({ message: 'All fields are required' })
     }
 
@@ -44,7 +43,7 @@ const createNewEmployee = asyncHandler(async (req, res) => {
     // // Hash password 
     // const hashedPwd = await bcrypt.hash(password, 10) // salt rounds
 
-    const employeeObject = { employeeEmail, employeePassword, employeeRole }
+    const employeeObject = { employeeName, employeeSurname, employeeEmail, employeePassword, employeeRole, employeeDepartment, employeeFund, employeeSpent, employeeBudget  }
 
     // Create and store new employee 
     const employee = await Employee.create(employeeObject)
@@ -60,10 +59,10 @@ const createNewEmployee = asyncHandler(async (req, res) => {
 // @route PATCH  /employees
 // @access Private
 const updateEmployee = asyncHandler(async (req, res) => {
-    const { id, employeeName, employeeSurname, employeeEmail, employeePassword, employeeRole, employeeDepartment, employeeFund, employeeSpent, employeeBudget } = req.body
+    const { id, employeeName, employeeSurname, employeeEmail, employeePassword, employeeRole, employeeDepartment, employeeFund, employeeSpent, employeeBudget  } = req.body
 
     //confirm data
-    if (!id || !employeeName || !employeeSurname || !employeeEmail || !employeePassword || !Array.isArray(employeeRole) || !employeeRole.length || !Array.isArray(employeeDepartment) || !employeeDepartment.length || !employeeFund || !employeeSpent || !employeeBudget) {
+    if (!id || !employeeName || !employeeSurname || !employeeEmail || !employeePassword|| !Array.isArray(employeeDepartment) || !employeeDepartment.length || !employeeFund || !employeeSpent ||!employeeBudget || !Array.isArray(employeeRole) || !employeeRole.length) {
         return res.status(400).json({ mesage: 'All fields are required' })
 
 

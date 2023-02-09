@@ -16,19 +16,19 @@ const eventSchema = new mongoose.Schema({
     }, 
     eventVenue: {
         type: String,
-        required: yes
+        required: true
     },
     eventStartDate: {
         type: Date,
-        required: yes
+        required: true
     },
     eventEndDate: {
         type: Date,
-        required: yes
+        required: true
     },
     eventDeadline: {
         type: Date,
-        required: yes
+        required: true
     },
     eventLength: {
         type: Number,
@@ -39,7 +39,8 @@ const eventSchema = new mongoose.Schema({
         required: true
     },
     eventWebLink: {
-        link: mongoose.SchemaTypes.Url
+        type: String,
+        required: false
     },
     eventDescription: {
         type: String,
