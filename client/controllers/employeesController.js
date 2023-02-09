@@ -25,10 +25,10 @@ const getAllEmployees = asyncHandler(async (req, res) => {
 // @route POST /employees
 // @access Private
 const createNewEmployee = asyncHandler(async (req, res) => {
-    const { employeeName, employeeSurname, employeeEmail, employeePassword, employeeRole, employeeDepartment, employeeFund, employeeSpent, employeeBudget  } = req.body
+    const { employeeName, employeeSurname, employeeEmail, employeePassword, employeeRole, employeeDepartment, employeeFund, employeeSpent, employeeBudget } = req.body
 
     // Confirm data
-    if (!employeeName || !employeeSurname || !employeeEmail || !employeePassword|| !Array.isArray(employeeDepartment) || !employeeDepartment.length || !employeeFund || !employeeSpent ||!employeeBudget || !Array.isArray(employeeRole) || !employeeRole.length) {
+    if (!employeeName || !employeeSurname || !employeeEmail || !employeePassword || !Array.isArray(employeeDepartment) || !employeeDepartment.length || !employeeFund || !employeeSpent || !employeeBudget || !Array.isArray(employeeRole) || !employeeRole.length) {
         return res.status(400).json({ message: 'All fields are required' })
     }
 
@@ -43,7 +43,7 @@ const createNewEmployee = asyncHandler(async (req, res) => {
     // // Hash password 
     // const hashedPwd = await bcrypt.hash(password, 10) // salt rounds
 
-    const employeeObject = { employeeName, employeeSurname, employeeEmail, employeePassword, employeeRole, employeeDepartment, employeeFund, employeeSpent, employeeBudget  }
+    const employeeObject = { employeeName, employeeSurname, employeeEmail, employeePassword, employeeRole, employeeDepartment, employeeFund, employeeSpent, employeeBudget }
 
     // Create and store new employee 
     const employee = await Employee.create(employeeObject)
@@ -59,11 +59,11 @@ const createNewEmployee = asyncHandler(async (req, res) => {
 // @route PATCH  /employees
 // @access Private
 const updateEmployee = asyncHandler(async (req, res) => {
-    const { id, employeeName, employeeSurname, employeeEmail, employeePassword, employeeRole, employeeDepartment, employeeFund, employeeSpent, employeeBudget  } = req.body
+    const { id, employeeName, employeeSurname, employeeEmail, employeePassword, employeeRole, employeeDepartment, employeeFund, employeeSpent, employeeBudget } = req.body
 
     //confirm data
-    if (!id || !employeeName || !employeeSurname || !employeeEmail || !employeePassword|| !Array.isArray(employeeDepartment) || !employeeDepartment.length || !employeeFund || !employeeSpent ||!employeeBudget || !Array.isArray(employeeRole) || !employeeRole.length) {
-        return res.status(400).json({ mesage: 'All fields are required' })
+    if (!id || !employeeName || !employeeSurname || !employeeEmail || !employeePassword || !Array.isArray(employeeDepartment) || !employeeDepartment.length || !employeeFund || !employeeSpent || !employeeBudget || !Array.isArray(employeeRole) || !employeeRole.length) {
+        return res.status(400).json({ message: 'All fields are required' })
 
 
     }
