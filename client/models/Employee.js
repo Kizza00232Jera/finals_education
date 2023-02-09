@@ -1,40 +1,39 @@
-
 const mongoose = require('mongoose')
 
-const userSchema = new mongoose.Schema({
-    userName: {
+const employeeSchema = new mongoose.Schema({
+    employeeName: {
         type: String,
         required: true
     }, 
-    userSurname: {
+    employeeSurname: {
         type: String,
         required: true
     },
-    userEmail: {
+    employeeEmail: {
         type: String,
         required: true
     },
-    userPassword: {
+    employeePassword: {
         type: String,
         required: true
     },
-    userRole: [{
+    employeeRole: [{
         type: Roles,
         default: "Employee"
     }],
-    userDepartment: [{
+    employeeDepartment: [{
         type: String,
         default: "Developer"
     }],
-    userFund: {
+    employeeFund: {
         type: Number,
         required: true
     },
-    userSpent: {
+    employeeSpent: {
         type: Number,
         required: true
     },
-    userBudget: {
+    employeeBudget: {
         type: Number,
         required: true
     }
@@ -45,4 +44,4 @@ const userSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model('Employee', employeeSchema)
