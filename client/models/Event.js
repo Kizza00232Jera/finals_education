@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 
 const eventSchema = new mongoose.Schema({
-    employeeCreated: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: false,
+    employeeEmail: {
+        type: mongoose.Schema.Types.String,
+        required: true,
         ref: 'Employee'
     },
     eventTitle: {
@@ -19,15 +19,15 @@ const eventSchema = new mongoose.Schema({
         required: true
     },
     eventStartDate: {
-        type: Date,
+        type: String,
         required: true
     },
     eventEndDate: {
-        type: Date,
+        type: String,
         required: true
     },
     eventDeadline: {
-        type: Date,
+        type: String,
         required: true
     },
     eventDuration: {

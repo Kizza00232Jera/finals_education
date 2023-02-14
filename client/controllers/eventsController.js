@@ -18,22 +18,22 @@ const getAllEvents = asyncHandler(async (req, res) => {
     // Add employee who created it to each event before sending the response 
     // See Promise.all with map() here: https://youtu.be/4lqJBBEpjRE 
     // You could also do this with a for...of loop
-    const eventsWithEmployee = await Promise.all(events.map(async (event) => {
-        const employee = await Employee.findById(event.employee).lean().exec()
-        return { ...event, employeeCreated: employee.employeeEmail }
-    }))
+    // const eventsWithEmployee = await Promise.all(events.map(async (event) => {
+    //     const employeeEmail = await Employee.findById(event.employeeEmail).lean().exec()
+    //     return { ...event, employeeEmail: employeeEmail.employeeEmail }
+    // }))
 
-    res.json(eventsWithEmployee)
+    res.json(events)
 })
 
 // @desc Create new event
 // @route POST /events
 // @access Private
 const createNewEvent = asyncHandler(async (req, res) => {
-    const { employeeCreated, eventTitle, eventCity, eventVenue, eventStartDate, eventEndDate, eventDeadline, eventDuration, eventPrice, eventWebLink, eventDescription } = req.body
+    const { employeeEmail, eventTitle, eventCity, eventVenue, eventStartDate, eventEndDate, eventDeadline, eventDuration, eventPrice, eventWebLink, eventDescription } = req.body
 
     // Confirm data
-    if (!employeeCreated || !eventTitle || !eventCity || !eventVenue || !eventStartDate || !eventEndDate || !eventDeadline || !eventDuration || !eventPrice || !eventDescription) {
+    if (!employeeEmail || !eventTitle || !eventCity || !eventVenue || !eventStartDate || !eventEndDate || !eventDeadline || !eventDuration || !eventPrice || !eventDescription) {
         return res.status(400).json({ message: 'All fields are required' })
     }
 
@@ -45,7 +45,7 @@ const createNewEvent = asyncHandler(async (req, res) => {
     }
 
     // Create and store the new employee 
-    const event = await Event.create({ employeeCreated, eventTitle, eventCity, eventVenue, eventStartDate, eventEndDate, eventDeadline, eventDuration, eventPrice, eventWebLink, eventDescription })
+    const event = await Event.create({ employeeEmail, eventTitle, eventCity, eventVenue, eventStartDate, eventEndDate, eventDeadline, eventDuration, eventPrice, eventWebLink, eventDescription })
 
     if (event) { // Created 
         return res.status(201).json({ message: 'New event created' })
@@ -60,10 +60,10 @@ const createNewEvent = asyncHandler(async (req, res) => {
 // @route PATCH /events
 // @access Private
 const updateEvent = asyncHandler(async (req, res) => {
-    const { id, employeeCreated, eventTitle, eventCity, eventVenue, eventStartDate, eventEndDate, eventDeadline, eventDuration, eventWebLink, eventPrice, eventDescription } = req.body
+    const { id, employeeEmail, eventTitle, eventCity, eventVenue, eventStartDate, eventEndDate, eventDeadline, eventDuration, eventWebLink, eventPrice, eventDescription } = req.body
 
     // Confirm data
-    if (!id || !employeeCreated || !eventTitle || !eventCity || !eventVenue || !eventStartDate || !eventEndDate || !eventDeadline || !eventDuration || !eventPrice || !eventDescription) {
+    if (!id || !employeeEmail || !eventTitle || !eventCity || !eventVenue || !eventStartDate || !eventEndDate || !eventDeadline || !eventDuration || !eventPrice || !eventDescription) {
         return res.status(400).json({ message: 'All fields are required' })
     }
 
@@ -75,14 +75,14 @@ const updateEvent = asyncHandler(async (req, res) => {
     }
 
     // Check for duplicate title
-    const duplicate = await Event.findOne({ title }).lean().exec()
+    const duplicate = await Event.findOne({ eventTitle }).lean().exec()
 
     // Allow renaming of the original event 
     if (duplicate && duplicate?._id.toString() !== id) {
         return res.status(409).json({ message: 'Duplicate event title' })
     }
 
-    event.employeeCreated = employeeCreated
+    event.employeeEmail = employeeEmail
     event.eventTitle = eventTitle
     event.eventCity = eventCity
     event.eventVenue = eventVenue
@@ -96,7 +96,7 @@ const updateEvent = asyncHandler(async (req, res) => {
 
     const updatedEvent = await event.save()
 
-    res.json(`'${updatedEvent.title}' updated`)
+    res.json(`'${updatedEvent.eventTitle}' updated`)
 })
 
 // @desc Delete a event
