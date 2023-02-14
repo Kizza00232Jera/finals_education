@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
 
 const eventSchema = new mongoose.Schema({
-    userCreated: {
+    employeeCreated: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'User'
+        required: false,
+        ref: 'Employee'
     },
     eventTitle: {
         type: String,
@@ -30,7 +30,7 @@ const eventSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-    eventLength: {
+    eventDuration: {
         type: Number,
         required: true
     },
@@ -40,7 +40,7 @@ const eventSchema = new mongoose.Schema({
     },
     eventWebLink: {
         type: String,
-        required: false
+        default: "no link available"
     },
     eventDescription: {
         type: String,
@@ -53,10 +53,5 @@ const eventSchema = new mongoose.Schema({
     timestamps: true
 }
 )
-
-// userSchema.set('timestamps', {
-//     createdAt: 'crdAt',
-//     updatedAt: 'updAt'
-// });
 
 module.exports = mongoose.model('Event', eventSchema)

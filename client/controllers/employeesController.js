@@ -1,5 +1,5 @@
 const Employee = require('../models/Employee')
-//const Event = require('../models/Event')
+const Event = require('../models/Event')
 
 const asyncHandler = require('express-async-handler')
 //const bcrypt = require('bcrypt')
