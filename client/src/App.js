@@ -4,8 +4,8 @@ import Public from './components/Public';
 import Login from './features/auth/Login';
 import DashLayout from './components/DashLayout';
 import Welcome from './features/auth/Welcome';
-import UsersList from './features/users/UsersList';
 import EventList from './features/events/EventList';
+import EmployeesList from './features/employees/EmployeeList';
 
 function App() {
   return (
@@ -20,8 +20,8 @@ function App() {
           <Route path="events">
             <Route index element={<EventList />} />
           </Route>
-          <Route path="users">
-            <Route index element={<UsersList />} />
+          <Route path="employees">
+            <Route index element={<EmployeesList />} />
           </Route>
 
 
