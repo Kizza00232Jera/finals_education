@@ -4,7 +4,7 @@ import Public from './components/Public';
 import Login from './features/auth/Login';
 import DashLayout from './components/DashLayout';
 import Welcome from './features/auth/Welcome';
-import EventList from './features/events/EventList';
+import EventsList from './features/events/EventsList';
 import EmployeesList from './features/employees/EmployeeList';
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
           <Route index element={<Welcome/>} />
 
           <Route path="events">
-            <Route index element={<EventList />} />
+            <Route index element={<EventsList />} />
           </Route>
           <Route path="employees">
             <Route index element={<EmployeesList />} />

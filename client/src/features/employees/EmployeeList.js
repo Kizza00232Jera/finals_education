@@ -27,7 +27,8 @@ const EmployeesList = () => {
       const tableContent = ids?.length
           ? ids.map(employeeId => <Employee key={employeeId} employeeId={employeeId} />)
           : null
-
+        //   console.log(employees)
+        //   console.log(tableContent)
       content = (
           <table className="table table--employees">
               <thead className="table__thead">
