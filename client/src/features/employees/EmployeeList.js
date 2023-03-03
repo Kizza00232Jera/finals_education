@@ -10,7 +10,14 @@ const EmployeesList = () => {
     isSuccess,
     isError,
     error
-  } = useGetEmployeesQuery()
+    //passing how often list to refresh, if we change tab and come back-refresh, if we remount component- refresh list
+  } = useGetEmployeesQuery(null, {
+    pollingInterval:60000,
+    refetchOnFocus: true,
+    refetchOnMountOrArgChange: true
+  }
+
+  )
   
   let content
 

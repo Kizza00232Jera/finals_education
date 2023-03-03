@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit"
 import { apiSlice } from "./api/apiSlice"
+import { setupListeners } from "@reduxjs/toolkit/dist/query"
 
 
 export const store = configureStore({
@@ -12,4 +13,4 @@ export const store = configureStore({
 })
 
 //enabling things that we can use in queries in users and event list
-//setupListeners(store.dispatch)
+setupListeners(store.dispatch)

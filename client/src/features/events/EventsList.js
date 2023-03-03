@@ -10,7 +10,13 @@ const EventsList = () => {
       isSuccess,
       isError,
       error
-    } = useGetEventsQuery()
+    } = useGetEventsQuery(undefined, {
+      pollingInterval: 45000,
+      refetchOnFocus: true,
+      refetchOnMountOrArgChange: true
+    }
+
+    )
 
   let content
 
