@@ -17,9 +17,8 @@ const Employee = ({ employeeId }) => {
 
         const employeeRolesString = employee.employeeRole.toString().replaceAll(',', ', ')
 
-        //cellstatus is if employee is active or not, later can be styled
-        // const cellStatus = employee.active ? '' : 'table__cell--inactive'
-     console.log(employee)
+      
+     //console.log(employee)
         return (
             <tr className="table__row employee">
                 <td className={`table__cell`}>{employee.employeeName}</td>
