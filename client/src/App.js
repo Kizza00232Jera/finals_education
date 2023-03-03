@@ -8,8 +8,8 @@ import EventsList from './features/events/EventsList';
 import EmployeesList from './features/employees/EmployeeList';
 import EditEmployee from './features/employees/EditEmployee';
 import NewEmployeeForm from './features/employees/NewEmployeeForm';
-import EditNote from './features/events/EditNote';
-import NewNote from './features/events/NewNote';
+import EditEvent from './features/events/EditEvent';
+import NewEvent from './features/events/NewEvent';
 import Prefetch from './features/auth/Prefetch';
 
 function App() {
@@ -31,8 +31,8 @@ function App() {
 
           <Route path="events">
             <Route index element={<EventsList />} />
-            <Route path=":id" element={<EditNote />} />
-            <Route path="new" element={<NewNote />} />
+            <Route path=":id" element={<EditEvent />} />
+            <Route path="new" element={<NewEvent />} />
           </Route>
 
 
