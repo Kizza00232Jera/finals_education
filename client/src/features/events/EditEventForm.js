@@ -6,12 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 
 //regex for checking fields
-const LETTERS_REGEX = /^[A-z]$/
-const ALLSYMBOLS_REGEX = /^[A-z0-9!@#$%]$/
-const DATES_REGEX = /^[0-9!@#$%]$/
+// const LETTERS_REGEX = /^[A-z]$/
+// const ALLSYMBOLS_REGEX = /^[A-z0-9!@#$%]$/
+// const DATES_REGEX = /^[0-9!@#$%]$/
 
 
-const EditEventForm = ({ event, employees }) => {
+const EditEventForm = ({ event }) => {
 
     const [updateEvent, {
         isLoading,
@@ -31,25 +31,25 @@ const EditEventForm = ({ event, employees }) => {
  
 
     const [eventTitle, setTitle] = useState(event.eventTitle)
-    const [validTitle, setValidTitle] = useState(false)
+    // const [validTitle, setValidTitle] = useState(false)
     const [eventCity, setCity] = useState(event.eventCity)
-    const [validCity, setValidCity] = useState(false)
+    //  const [validCity, setValidCity] = useState(false)
     const [eventVenue, setVenue] = useState(event.eventVenue)
-    const [validVenue, setValidVenue] = useState(false)
+    //  const [validVenue, setValidVenue] = useState(false)
     const [eventStartDate, setStartDate] = useState(event.eventStartDate)
-    const [validStartDate, setValidStartDate] = useState(false)
+   //   const [validStartDate, setValidStartDate] = useState(false)
     const [eventEndDate, setEndDate] = useState(event.eventEndDate)
-    const [validEndDate, setValidEndDate] = useState(false)
+    //  const [validEndDate, setValidEndDate] = useState(false)
     const [eventDeadline, setDeadline] = useState(event.eventDeadline)
-    const [validDeadline, setValidDeadline] = useState(false)
+    //  const [validDeadline, setValidDeadline] = useState(false)
     const [eventDuration, setDuration] = useState(event.eventDuration)
-    const [validDuration, setValidDuration] = useState(false)
+    //  const [validDuration, setValidDuration] = useState(false)
     const [eventPrice, setPrice] = useState(event.eventPrice)
-    const [validPrice, setValidPrice] = useState(false)
+    //  const [validPrice, setValidPrice] = useState(false)
     const [eventWebLink, setWebLink] = useState(event.eventWebLink)
-    const [validWebLink, setValidWebLink] = useState(false)
+    //  const [validWebLink, setValidWebLink] = useState(false)
     const [eventDescription, setDescription] = useState(event.eventDescription)
-    const [validDescription, setValidDescription] = useState(false)
+    //  const [validDescription, setValidDescription] = useState(false)
        //ADD EMPLOYEE ID -> EMPLOYEE EMAIL 
        //THIS WILL NEED TO BE CHANGED TO BE ABLE TO EDIT OR CREATE EVENT
     const [employeeEmail, setEmployeeEmail] = useState(event.employeeEmail)
@@ -69,45 +69,45 @@ const EditEventForm = ({ event, employees }) => {
     //making sure that title and description have letters(&nr)
     //and that numbers and dates dont have letters
 
-    useEffect(() => {
-        setValidTitle(ALLSYMBOLS_REGEX.test(eventTitle))
-    }, [eventTitle])
+    // useEffect(() => {
+    //     setValidTitle(ALLSYMBOLS_REGEX.test(eventTitle))
+    // }, [eventTitle])
 
-    useEffect(() => {
-        setValidCity(LETTERS_REGEX.test(eventCity))
-    }, [eventCity])
+    // useEffect(() => {
+    //     setValidCity(LETTERS_REGEX.test(eventCity))
+    // }, [eventCity])
 
-    useEffect(() => {
-        setValidVenue(ALLSYMBOLS_REGEX.test(eventVenue))
-    }, [eventVenue])
+    // useEffect(() => {
+    //     setValidVenue(ALLSYMBOLS_REGEX.test(eventVenue))
+    // }, [eventVenue])
 
-    useEffect(() => {
-        setValidStartDate(DATES_REGEX.test(eventStartDate))
-    }, [eventStartDate])
+    // useEffect(() => {
+    //     setValidStartDate(DATES_REGEX.test(eventStartDate))
+    // }, [eventStartDate])
 
-    useEffect(() => {
-        setValidEndDate(DATES_REGEX.test(eventEndDate))
-    }, [eventEndDate])
+    // useEffect(() => {
+    //     setValidEndDate(DATES_REGEX.test(eventEndDate))
+    // }, [eventEndDate])
 
-    useEffect(() => {
-        setValidDeadline(DATES_REGEX.test(eventDeadline))
-    }, [eventDeadline])
+    // useEffect(() => {
+    //     setValidDeadline(DATES_REGEX.test(eventDeadline))
+    // }, [eventDeadline])
 
-    useEffect(() => {
-        setValidDuration(DATES_REGEX.test(eventDuration))
-    }, [eventDuration])
+    // useEffect(() => {
+    //     setValidDuration(DATES_REGEX.test(eventDuration))
+    // }, [eventDuration])
 
-    useEffect(() => {
-        setValidPrice(DATES_REGEX.test(eventPrice))
-    }, [eventPrice])
+    // useEffect(() => {
+    //     setValidPrice(DATES_REGEX.test(eventPrice))
+    // }, [eventPrice])
 
-    useEffect(() => {
-        setValidWebLink(ALLSYMBOLS_REGEX.test(eventWebLink))
-    }, [eventWebLink])
+    // useEffect(() => {
+    //     setValidWebLink(ALLSYMBOLS_REGEX.test(eventWebLink))
+    // }, [eventWebLink])
 
-    useEffect(() => {
-        setValidDescription(ALLSYMBOLS_REGEX.test(eventDescription))
-    }, [eventDescription])
+    // useEffect(() => {
+    //     setValidDescription(ALLSYMBOLS_REGEX.test(eventDescription))
+    // }, [eventDescription])
 
 
     useEffect(() => {
@@ -141,11 +141,11 @@ const EditEventForm = ({ event, employees }) => {
     const onDescriptionChanged = e => setDescription(e.target.value)
     const onEmployeeEmailChanged = e => setEmployeeEmail(e.target.value)
 
-    const canSave = [employeeEmail, validTitle, validCity, validVenue, validStartDate, validEndDate, validDeadline, validDuration, validPrice, validWebLink, validDescription].every(Boolean) && !isLoading
+    const canSave = [employeeEmail, eventTitle, eventCity, eventVenue, eventStartDate, eventEndDate, eventDeadline, eventDuration, eventPrice, eventWebLink, eventDescription].every(Boolean) && !isLoading
 
     const onSaveEventClicked = async (e) => {
         if (canSave) {
-            await updateEvent({ id: event.id, employee: employeeEmail, eventTitle, eventCity, eventVenue, eventStartDate, eventEndDate, eventDeadline, eventDuration, eventPrice, eventWebLink, eventDescription })
+            await updateEvent({ id: event.id, employeeEmail: employeeEmail, eventTitle, eventCity, eventVenue, eventStartDate, eventEndDate, eventDeadline, eventDuration, eventPrice, eventWebLink, eventDescription })
         }
     }
 
