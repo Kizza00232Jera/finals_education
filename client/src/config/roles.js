@@ -4,10 +4,3 @@ export const ROLES = {
     Admin: 'Admin'
 }
 
-export const DEPARTMENT = {
-    IOS: 'IOS',
-    Android: 'Android',
-    PC: 'PC',
-    Frontend: 'Frontend',
-    Backend: 'Backend'
-}

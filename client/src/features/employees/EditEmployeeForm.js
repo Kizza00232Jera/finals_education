@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { ROLES } from "../../config/roles"
+import { DEPARTMENTS } from "../../config/departments"
 
 
 //regex for checking fields
@@ -32,17 +33,33 @@ const EditEmployeeForm = ({employee}) => {
     const navigate = useNavigate()
 
     //its same state like in a new user form. 
-    const [username, setUsername] = useState(employee.employeeName)
+    const [employeeName, setUsername] = useState(employee.employeeName)
     const [validUsername, setValidUsername] = useState(false)
+    const [employeeSurname, setSurname] = useState(employee.employeeSurname)
+    const [employeeEmail, setEmail] = useState(employee.employeeEmail)
     const [password, setPassword] = useState('')
     const [validPassword, setValidPassword] = useState(false)
     const [employeeRole, setRoles] = useState(employee.employeeRole)
+    const [employeeDepartment, setDepartment] = useState(employee.employeDepartment)
+    const [employeeFund, setFund] = useState(employee.employeeFund)
+    const [employeeSpent, setSpent] = useState(employee.employeeSpent)
+    const [employeeBudget, setBudget] = useState(employee.employeeBudget)
+
+    // employee.employeeName = employeeName DONEEE
+    // employee.employeeSurname = employeeSurname DONEEE
+    // employee.employeeEmail = employeeEmail DONEEE
+    // employee.employeePassword = employeePassword DONEEE
+    // employee.employeeRole = employeeRole DONEEE
+    // employee.employeeDepartment = employeeDepartment DONEEE
+    // employee.employeeFund = employeeFund DONEEE
+    // employee.employeeSpent = employeeSpent DONEEE
+    // employee.employeeBudget = employeeBudget DONEEE
     
 
-    //checking for valid username and password
+    //checking for valid employeeName and password
     useEffect(() => {
-        setValidUsername(EMPLOYEE_REGEX.test(username))
-    }, [username])
+        setValidUsername(EMPLOYEE_REGEX.test(employeeName))
+    }, [employeeName])
 
     useEffect(() => {
         setValidPassword(PWD_REGEX.test(password))
@@ -53,16 +70,27 @@ const EditEmployeeForm = ({employee}) => {
         console.log(isSuccess)
         if (isSuccess || isDelSuccess) {
             setUsername('')
+            setSurname('')
             setPassword('')
+            setEmail('')
             setRoles([])
+            setDepartment([])
+            setFund('')
+            setSpent('')
+            setBudget('')
             navigate('/dash/employees')
         }
 
     }, [isSuccess, isDelSuccess, navigate])
 
-     //handlers, on usernamechanged, set username to the inputed value
+     //handlers, on usernamechanged, set employeeName to the inputed value
      const onUsernameChanged = e => setUsername(e.target.value)
+     const onSurnameChanged = e => setSurname(e.target.value)
+     const onEmailChanged = e => setEmail(e.target.value)
      const onPasswordChanged = e => setPassword(e.target.value)
+     const onFundChanged = e => setFund(e.target.value)
+     const onSpentChanged = e => setSpent(e.target.value)
+     const onBudgetChanged = e => setBudget(e.target.value)
  
      const onRolesChanged = e => {
          const values = Array.from(
@@ -72,14 +100,21 @@ const EditEmployeeForm = ({employee}) => {
          setRoles(values)
      }
  
+     const onDepartmentsChanged = e => {
+        const values = Array.from(
+            e.target.selectedOptions,
+            (option) => option.value
+        )
+        setDepartment(values)
+    }
    
 
     //we want to check if we have an password updated, as well as if we have it without password updated
     const onSaveEmployeeClicked = async (e) => {
         if (password) {
-            await updateEmployee({ id: employee.id, username, password, employeeRole })
+            await updateEmployee({ id: employee.id, employeeName, password, employeeRole })
         } else {
-            await updateEmployee({ id: employee.id, username, employeeRole })
+            await updateEmployee({ id: employee.id, employeeName, employeeRole })
         }
     }
 
@@ -95,6 +130,16 @@ const EditEmployeeForm = ({employee}) => {
                 value={role}
 
             > {role}</option >
+        )
+    })
+
+    const options2 = Object.values(DEPARTMENTS).map(department => {
+        return (
+            <option
+                key={department}
+                value={department}
+
+            > {department}</option>
         )
     })
 
@@ -137,16 +182,38 @@ const EditEmployeeForm = ({employee}) => {
                         </button>
                     </div>
                 </div>
-                <label className="form__label" htmlFor="username">
-                    Username: <span className="nowrap">[3-20 letters]</span></label>
+                <label className="form__label" htmlFor="employeeName">
+                    Name: <span className="nowrap">[3-20 letters]</span></label>
                 <input
                     className={`form__input ${validUserClass}`}
-                    id="username"
-                    name="username"
+                    id="employeeName"
+                    name="employeeName"
                     type="text"
                     autoComplete="off"
-                    value={username}
+                    value={employeeName}
                     onChange={onUsernameChanged}
+                /> 
+                <label className="form__label" htmlFor="employeeSurname">
+                Surname: <span className="nowrap">[3-20 letters]</span></label>
+            <input
+                className={`form__input ${validUserClass}`}
+                id="employeeSurname"
+                name="employeeSurname"
+                type="text"
+                autoComplete="off"
+                value={employeeSurname}
+                onChange={onSurnameChanged}
+            />
+                 <label className="form__label" htmlFor="email">
+                    Email: <span className="nowrap">[incl @]</span></label>
+                <input
+                    className={`form__input ${validUserClass}`}
+                    id="email"
+                    name="email"
+                    type="text"
+                    autoComplete="off"
+                    value={employeeEmail}
+                    onChange={onEmailChanged}
                 />
 
                 <label className="form__label" htmlFor="password">
@@ -159,6 +226,19 @@ const EditEmployeeForm = ({employee}) => {
                     value={password}
                     onChange={onPasswordChanged}
                 />
+
+                <label className="form__label" htmlFor="roles">
+                    ASSIGNED DEPARTMENTS:</label>
+                <select
+                    id="roles"
+                    name="roles"
+                    multiple={true}
+                    size="3"
+                    value={employeeDepartment}
+                    onChange={onDepartmentsChanged}
+                >
+                    {options2}
+                </select>
 
 
                 <label className="form__label" htmlFor="roles">
@@ -174,6 +254,36 @@ const EditEmployeeForm = ({employee}) => {
                 >
                     {options}
                 </select>
+                <label className="form__label" htmlFor="employeeFund">
+                Fund: <span className="nowrap">[number]</span></label>
+            <input  
+                id="employeeFund"
+                name="employeeFund"
+                type="text"
+                autoComplete="off"
+                value={employeeFund}
+                onChange={onFundChanged}
+            />
+             <label className="form__label" htmlFor="employeeSpent">
+                Spent: <span className="nowrap">[number]</span></label>
+            <input    
+                id="employeeSpent"
+                name="employeeSpent"
+                type="text"
+                autoComplete="off"
+                value={employeeSpent}
+                onChange={onSpentChanged}
+            />
+              <label className="form__label" htmlFor="employeeBudget">
+                Remaining Budget: <span className="nowrap">[number]</span></label>
+            <input
+                id="employeeBudget"
+                name="employeeBudget"
+                type="text"
+                autoComplete="off"
+                value={employeeBudget}
+                onChange={onBudgetChanged}
+            />
 
             </form>
         </>
