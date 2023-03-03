@@ -52,6 +52,7 @@ const EditEventForm = ({ event }) => {
     //  const [validDescription, setValidDescription] = useState(false)
        //ADD EMPLOYEE ID -> EMPLOYEE EMAIL 
        //THIS WILL NEED TO BE CHANGED TO BE ABLE TO EDIT OR CREATE EVENT
+       //works now
     const [employeeEmail, setEmployeeEmail] = useState(event.employeeEmail)
 
     //   event.employeeEmail = employeeEmail
