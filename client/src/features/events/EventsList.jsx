@@ -1,9 +1,12 @@
 import React from 'react'
 import Event from './Event'
 import { useGetEventsQuery } from './eventsApiSlice'
-
+import useAuth from "../../hooks/useAuth"
 
 const EventsList = () => {
+
+  const {employeeEmail, isManager, isAdmin } = useAuth()
+
   const {
       data: events,
       isLoading,
@@ -27,11 +30,16 @@ const EventsList = () => {
   }
 
   if (isSuccess) {
-      const { ids } = events
-      const tableContent = ids?.length
-      ? ids.map(eventId => <Event key={eventId} eventId={eventId} />)
-      : null
-          
+      const { ids, entities } = events
+
+    let filteredIds
+    if (isManager || isAdmin) {
+        filteredIds = [...ids]
+    } else {
+        filteredIds = ids.filter(eventId => entities[eventId].employeeEmail === employeeEmail)
+    }
+
+    const tableContent = ids?.length && filteredIds.map(eventId => <Event key={eventId} eventId={eventId} />)
 
       content = (
           <table className="table table--events">

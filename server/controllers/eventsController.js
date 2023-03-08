@@ -38,7 +38,7 @@ const createNewEvent = asyncHandler(async (req, res) => {
     }
 
     // Check for duplicate title
-    const duplicate = await Event.findOne({ eventTitle }).lean().exec()
+    const duplicate = await Event.findOne({ eventTitle }).collation({ locale:'en', strength: 2}).lean().exec()
 
     if (duplicate) {
         return res.status(409).json({ message: 'Duplicate event title' })
@@ -75,7 +75,7 @@ const updateEvent = asyncHandler(async (req, res) => {
     }
 
     // Check for duplicate title
-    const duplicate = await Event.findOne({ eventTitle }).lean().exec()
+    const duplicate = await Event.findOne({ eventTitle }).collation({ locale:'en', strength: 2}).lean().exec()
 
     // Allow renaming of the original event 
     if (duplicate && duplicate?._id.toString() !== id) {

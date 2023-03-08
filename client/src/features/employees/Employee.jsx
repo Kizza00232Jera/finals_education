@@ -17,8 +17,8 @@ const Employee = ({ employeeId }) => {
 
         const employeeRolesString = employee.employeeRole.toString().replaceAll(',', ', ')
 
-      
-     //console.log(employee)
+
+        //console.log(employee)
         return (
             <tr className="table__row employee">
                 <td className={`table__cell`}>{employee.employeeName}</td>

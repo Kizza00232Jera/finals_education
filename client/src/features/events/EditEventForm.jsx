@@ -4,6 +4,7 @@ import { useUpdateEventMutation, useDeleteEventMutation } from "./eventsApiSlice
 import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
+import useAuth from '../../hooks/useAuth'
 
 //regex for checking fields
 // const LETTERS_REGEX = /^[A-z]$/
@@ -12,6 +13,8 @@ import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 
 
 const EditEventForm = ({ event }) => {
+
+    const { isManager, isAdmin } = useAuth()
 
     const [updateEvent, {
         isLoading,
@@ -170,6 +173,19 @@ const EditEventForm = ({ event }) => {
     const errClass = (isError || isDelError) ? "errmsg" : "offscreen"
     const errContent = (error?.data?.message || delerror?.data?.message) ?? ''
 
+    let deleteButton = null
+    if (isManager || isAdmin) {
+        deleteButton = (
+            <button
+                className="icon-button"
+                title="Delete"
+                onClick={onDeleteEventClicked}
+            >
+                <FontAwesomeIcon icon={faTrashCan} />
+            </button>
+        )
+    }
+
 
     const content = (
         <>
@@ -187,13 +203,7 @@ const EditEventForm = ({ event }) => {
                         >
                             <FontAwesomeIcon icon={faSave} />
                         </button>
-                        <button
-                            className="icon-button"
-                            title="Delete"
-                            onClick={onDeleteEventClicked}
-                        >
-                            <FontAwesomeIcon icon={faTrashCan} />
-                        </button>
+                        {deleteButton}
                     </div>
                 </div>
                 <label className="form__label" htmlFor="event-title">

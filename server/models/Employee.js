@@ -18,14 +18,14 @@ const employeeSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    employeeRole: [{
-        type: String,
-        default: "Employee"
-    }],
-    employeeDepartment: [{
-        type: String,
-        default: "Developer"
-    }],
+    employeeRole: {
+        type: [String],
+        default: ["Employee"]
+    },
+    employeeDepartment: {
+        type: [String],
+        default: ["Developer"]
+    },
     employeeFund: {
         type: Number,
         required: true

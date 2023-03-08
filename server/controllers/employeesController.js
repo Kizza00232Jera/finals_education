@@ -33,8 +33,8 @@ const createNewEmployee = asyncHandler(async (req, res) => {
     }
 
     // Check for duplicate employees
-    const duplicate = await Employee.findOne({ employeeEmail }).lean().exec()
-
+    const duplicate = await Employee.findOne({employeeEmail}).collation({ locale:'en', strength: 2}).lean().exec()
+   
     if (duplicate) {
         return res.status(409).json({ message: ' employee already exists, email already used' })
     }
@@ -76,7 +76,7 @@ const updateEmployee = asyncHandler(async (req, res) => {
     }
 
     //check for duplicate
-    const duplicate = await Employee.findOne({ employeeEmail }).lean().exec()
+    const duplicate = await Employee.findOne({ employeeEmail }).collation({ locale:'en', strength: 2}).lean().exec()
     //allow updates to the original employee
     if (duplicate && duplicate?._id.toString() !== id) {
         return res.status(409).json({ message: 'Duplicate employee' })
