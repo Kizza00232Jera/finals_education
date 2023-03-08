@@ -11,7 +11,8 @@ const employeeSchema = new mongoose.Schema({
     },
     employeeEmail: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     employeePassword: {
         type: String,

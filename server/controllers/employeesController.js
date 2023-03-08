@@ -2,7 +2,7 @@ const Employee = require('../models/Employee')
 const Event = require('../models/Event')
 
 const asyncHandler = require('express-async-handler')
-//const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 
 
 // @desc Get all employees
@@ -39,11 +39,12 @@ const createNewEmployee = asyncHandler(async (req, res) => {
         return res.status(409).json({ message: ' employee already exists, email already used' })
     }
 
-    // making passwords secure even in database 
-    // // Hash password 
-    // const hashedPwd = await bcrypt.hash(password, 10) // salt rounds
+     // Hash password
+    const salt = await bcrypt.genSalt(10)
+    const hashedPassword = await bcrypt.hash(employeePassword, salt)
 
-    const employeeObject = { employeeName, employeeSurname, employeeEmail, employeePassword, employeeRole, employeeDepartment, employeeFund, employeeSpent, employeeBudget }
+
+    const employeeObject = { employeeName, employeeSurname, employeeEmail, employeePassword: hashedPassword, employeeRole, employeeDepartment, employeeFund, employeeSpent, employeeBudget }
 
     // Create and store new employee 
     const employee = await Employee.create(employeeObject)
@@ -62,7 +63,7 @@ const updateEmployee = asyncHandler(async (req, res) => {
     const { id, employeeName, employeeSurname, employeeEmail, employeePassword, employeeRole, employeeDepartment, employeeFund, employeeSpent, employeeBudget } = req.body
 
     //confirm data
-    if (!id || !employeeName || !employeeSurname || !employeeEmail || !employeePassword || !Array.isArray(employeeDepartment) || !employeeDepartment.length || !employeeFund || !employeeSpent || !employeeBudget || !Array.isArray(employeeRole) || !employeeRole.length) {
+    if (!id || !employeeName || !employeeSurname || !employeeEmail || !Array.isArray(employeeDepartment) || !employeeDepartment.length || !employeeFund || !employeeSpent || !employeeBudget || !Array.isArray(employeeRole) || !employeeRole.length) {
         return res.status(400).json({ message: 'All fields are required' })
 
 
@@ -80,22 +81,28 @@ const updateEmployee = asyncHandler(async (req, res) => {
     if (duplicate && duplicate?._id.toString() !== id) {
         return res.status(409).json({ message: 'Duplicate employee' })
     }
+    if (employeePassword) {
+        //hash password
+        const salt = await bcrypt.genSalt(10)
+        const hashedPassword = await bcrypt.hash(employeePassword, salt)
+
+        employee.employeePassword = hashedPassword
+    }
+
 
     employee.employeeName = employeeName
     employee.employeeSurname = employeeSurname
     employee.employeeEmail = employeeEmail
-    employee.employeePassword = employeePassword
     employee.employeeRole = employeeRole
     employee.employeeDepartment = employeeDepartment
     employee.employeeFund = employeeFund
     employee.employeeSpent = employeeSpent
     employee.employeeBudget = employeeBudget
 
-    //if i hash password later
-    // if (password) {
-    //     // Hash password 
-    //     employee.password = await bcrypt.hash(password, 10) // salt rounds 
-    // }
+    
+
+
+
 
     const updatedEmployee = await employee.save()
     res.json({ message: `${updatedEmployee.employeeEmail} updated` })
