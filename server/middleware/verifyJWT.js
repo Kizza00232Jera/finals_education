@@ -14,14 +14,14 @@ const verifyJWT = (req, res, next) => {
         process.env.ACCESS_TOKEN_SECRET,
         (err, decoded) => {
             if (err) return res.status(403).json({ message: 'Forbidden' })
-            req.employeeName = decoded.UserInfo.employeeName
-            req.employeeSurname = decoded.UserInfo.employeeSurname
-            req.employeeEmail = decoded.UserInfo.employeeEmail
-            req.employeeRole = decoded.UserInfo.employeeRole
-            req.employeeDepartment = decoded.UserInfo.employeeDepartment
-            req.employeeFund = decoded.UserInfo.employeeFund
-            req.employeeSpent = decoded.UserInfo.employeeSpent
-            req.employeeBudget = decoded.UserInfo.employeeBudget
+            req.employeeName = decoded.EmployeeInfo.employeeName
+            req.employeeSurname = decoded.EmployeeInfo.employeeSurname
+            req.employeeEmail = decoded.EmployeeInfo.employeeEmail
+            req.employeeRole = decoded.EmployeeInfo.employeeRole
+            req.employeeDepartment = decoded.EmployeeInfo.employeeDepartment
+            req.employeeFund = decoded.EmployeeInfo.employeeFund
+            req.employeeSpent = decoded.EmployeeInfo.employeeSpent
+            req.employeeBudget = decoded.EmployeeInfo.employeeBudget
             
             next()
         }

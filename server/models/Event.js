@@ -2,8 +2,7 @@ const mongoose = require('mongoose')
 
 const eventSchema = new mongoose.Schema({
     employeeEmail: {
-        //change to types.string if not working
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.String,
         required: true,
         ref: 'Employee'
     },

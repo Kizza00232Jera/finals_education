@@ -33,8 +33,8 @@ const login = asyncHandler(async (req,res) => {
     const accessToken = jwt.sign(
         {
             "EmployeeInfo": {
-                "employeeName": foundEmployee.employeeName,
                 "employeeSurname": foundEmployee.employeeSurname,
+                "employeeName": foundEmployee.employeeName,
                 "employeeEmail": foundEmployee.employeeEmail,
                 "employeeRole": foundEmployee.employeeRole,
                 "employeeDepartment": foundEmployee.employeeDepartment,
@@ -92,8 +92,8 @@ const refresh =  (req,res) => {
             const accessToken = jwt.sign(
                 {
                     "EmployeeInfo": {
-                        "employeeName": foundEmployee.employeeName,
                         "employeeSurname": foundEmployee.employeeSurname,
+                        "employeeName": foundEmployee.employeeName,
                         "employeeEmail": foundEmployee.employeeEmail,
                         "employeeRole": foundEmployee.employeeRole,
                         "employeeDepartment": foundEmployee.employeeDepartment,
