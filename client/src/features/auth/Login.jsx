@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-
+import edulogo from "../../img/edulogo.png"
 import { useDispatch } from 'react-redux'
 import { setCredentials } from './authSlice'
 import { useLoginMutation } from './authApiSlice'
@@ -65,48 +65,65 @@ const Login = () => {
 
   if (isLoading) return <p>Loading...</p>
 
-   const content = (
-    <section >
-        <header>
-            <h1>Employee Login</h1>
+   const content = (  
+  <section className='centered grid grid-rows-3'>
+    <div>
+          <img src={edulogo} className="object-fill h-48 w-96" alt="logo" />
+    </div>
+    <div className=''>
+
+        <header className='pb-10'>
+            <h1 className='text-4xl'>Welcome Back</h1>
+            <p className='text-base'>Please enter your details</p>
         </header>
         <main >
             <p ref={errRef} aria-live="assertive">{errMsg}</p>
-
             <form  onSubmit={handleSubmit}>
-                <label htmlFor="email">Email:</label>
+                <label className='text-sm font-bold block' htmlFor="email">Email:</label>
                 <input
                     type="text"
                     id="email"
+                    className='block w-500 border border-rich-gray rounded p-2 mb-6'
                     ref={employeeRef}
                     value={employeeEmail}
                     onChange={handleUserInput}
                     autoComplete="off"
+                    placeholder='email'
                     required
-                />
+                    />
 
-                <label htmlFor="password">Password:</label>
+                <label className='text-sm font-bold block' htmlFor="password">Password:</label>
                 <input
                     type="password"
                     id="password"
+                    className='block w-500 border border-rich-gray rounded p-2 mb-4'
                     onChange={handlePwdInput}
                     value={employeePassword}
+                    placeholder='password'
                     required
-                />
-                <button>Sign In</button>
+                    />
+
+                    <div className='flex mb-6'>
                 <label htmlFor="persist">
                     <input
                         type="checkbox"
                         id="persist"
+                        className='text-base'
                         onChange={handleToggle}
                         checked={persist}
-                    />
-                    Trust This Device
+                        />
+                    Remember me
                 </label>
+                <div className='grow'></div>
+                <Link to='/'><p className='text-primary font-extrabold'>Forgot Password?</p></Link>
+                        </div>
+                <button className='w-500 text-center p-2 bg-primary text-sm font-bold rounded text-color-white mb-4'>Log in</button>
+                <button disabled className='w-500 text-center p-2 bg-power-gray text-sm font-bold rounded text-color-white cursor-not-allowed'>Sign in with google</button>
             </form>
         </main>
+      </div>
         <footer>
-            <Link to="/">Back to Home</Link>
+            <p className='text-power-gray'>Copyright 2022. All rights reserved.</p>
         </footer>
     </section>
 )
