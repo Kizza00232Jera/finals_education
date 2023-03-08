@@ -6,7 +6,10 @@ import NewEventForm from './NewEventForm'
 const NewEvent = () => {
   const employees = useSelector(selectAllEmployees)
   
-  const content = employees ? <NewEventForm employees={employees} /> : <p>loading...</p>
+  if (!employees?.length) return <p>Not Currently Available</p>
+
+
+  const content = <NewEventForm employees={employees} /> 
   
   
   return content

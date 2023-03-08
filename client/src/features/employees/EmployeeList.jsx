@@ -11,7 +11,7 @@ const EmployeesList = () => {
     isError,
     error
     //passing how often list to refresh, if we change tab and come back-refresh, if we remount component- refresh list
-  } = useGetEmployeesQuery(null, {
+  } = useGetEmployeesQuery('employeesList', {
     pollingInterval:60000,
     refetchOnFocus: true,
     refetchOnMountOrArgChange: true

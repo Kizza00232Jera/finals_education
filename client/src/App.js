@@ -11,6 +11,7 @@ import NewEmployeeForm from './features/employees/NewEmployeeForm';
 import EditEvent from './features/events/EditEvent';
 import NewEvent from './features/events/NewEvent';
 import Prefetch from './features/auth/Prefetch';
+import PersistLogin from './features/auth/PersistLogin';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route index element={<Public />}/>
         <Route path="login" element={<Login/>}/>
 
+        <Route element={<PersistLogin />}> 
         <Route element={<Prefetch />}> 
         <Route path="dash" element={<DashLayout />}>
           <Route index element={<Welcome/>} />
@@ -38,6 +40,7 @@ function App() {
 
         </Route> {/* end dash */}
         </Route> {/* end prefetch */}
+        </Route> {/* end persistlogin */}
         </Route>
     </Routes>
   
