@@ -11,7 +11,7 @@ import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { useSendLogoutMutation } from '../features/auth/authApiSlice'
 import useAuth from '../hooks/useAuth'
 
-const DASH_REGEX = /^\/dash(\/)?$/
+//const DASH_REGEX = /^\/dash(\/)?$/
 const EVENTS_REGEX = /^\/dash\/events(\/)?$/
 const EMPLOYEES_REGEX = /^\/dash\/employees(\/)?$/
 
@@ -26,7 +26,6 @@ const DashHeader = () => {
     const [sendLogout, {
         isLoading,
         isSuccess,
-        isError,
         error
     }] = useSendLogoutMutation()
 

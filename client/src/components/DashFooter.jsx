@@ -1,38 +1,12 @@
 import React from 'react'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faHouse } from "@fortawesome/free-solid-svg-icons"
-import { useNavigate, useLocation } from 'react-router-dom'
-import useAuth from '../hooks/useAuth'
 
 const DashFooter = () => {
-
-    const { employeeEmail, status } = useAuth()
-
-    const navigate = useNavigate()
-    const { pathname } = useLocation()
-
-    const onGoHomeClicked = () => navigate('/dash')
-
-    let goHomeButton = null
-    if (pathname !== '/dash') {
-        goHomeButton = (
-            <button
-                title="Home"
-                onClick={onGoHomeClicked}>
-                <FontAwesomeIcon icon={faHouse} />
-            </button>
-        )
-    }
-
-    const content = (
-        <footer>
-            {goHomeButton}
-            <p>Current User:{employeeEmail}</p>
-            <p>Status: {status}</p>
-        </footer>
-    )
-
-    return content
+  return (
+    <div className='absolute inset-x-0 bottom-0 left-281'>
+      <p className='text-xs'>Copyright 2023. All rights reserved</p>
+    </div>
+  )
 }
+
 
 export default DashFooter

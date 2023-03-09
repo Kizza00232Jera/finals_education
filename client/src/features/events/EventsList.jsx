@@ -42,21 +42,23 @@ const EventsList = () => {
     const tableContent = ids?.length && filteredIds.map(eventId => <Event key={eventId} eventId={eventId} />)
 
       content = (
-          <table className="table table--events">
-              <thead className="table__thead">
+        <div>
+              <h1>Educations</h1>
+          <table className="w-full text-left ">
+              <thead classname="border  rounded-lg ">
                   <tr>
-                      {/* <th scope="col" className="table__th event__status">Username</th>
-                      <th scope="col" className="table__th event__created">Created</th>
-                      <th scope="col" className="table__th event__updated">Updated</th> */}
-                      <th scope="col" className="table__th event__title">Title</th>
-                      <th scope="col" className="table__th event__username">Owner</th>
-                      <th scope="col" className="table__th event__edit">Edit</th>
+                      <th scope="col" className="">Title</th>
+                      <th scope="col" className="">Price</th>
+                      <th scope="col" className="">Start Date</th>
+                      <th scope="col" className="">Likes</th>
+                      <th scope="col" className="">Edit</th>
                   </tr>
               </thead>
-              <tbody>
+              <tbody classname="">
               {tableContent} 
               </tbody>
           </table>
+        </div>
       )
     }
     

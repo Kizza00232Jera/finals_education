@@ -12,12 +12,22 @@ module.exports = {
       'warning': '#FFB800',
       'error': '#F8403A	',
       'rich-gray':'#505050',
-      'power-gray':'#858585'
+      'power-gray':'#858585',
+      'smoke-gray': '#A4A4A4',
+      'soft-gray': '#DEDEDE'
     },
     extend: {
       spacing: {
-        '500': '500px'
+        '500': '500px',
+        '233': '233px',
+        
+      },
+      inset: {
+        '281': '281px'
       }
+    },
+    minWidth: {
+      '400': '40%',
     }
   }
 }

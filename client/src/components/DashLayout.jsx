@@ -1,16 +1,20 @@
 import React from 'react'
 import {Outlet} from 'react-router-dom'
-import DashHeader from './DashHeader'
 import DashFooter from './DashFooter'
+import LeftNav from './LeftNav'
 
 const DashLayout = () => {
   return (
     <>
-        <DashHeader />
+      <div className='flex'>
+        <LeftNav />
+      <div className='w-main ml-20 mr-20'>
         <div>
             <Outlet/>
         </div>
         <DashFooter/>
+      </div>
+      </div>
 
     </>
   )

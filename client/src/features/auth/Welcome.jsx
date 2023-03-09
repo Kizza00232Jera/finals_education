@@ -5,7 +5,7 @@ import useAuth from '../../hooks/useAuth'
 const Welcome = () => {
 
   //remove unused values
-  const { employeeName, employeeSurname, employeeEmail, employeeRole, employeeDepartment, employeeFund, employeeSpent, employeeBudget, isManager, isAdmin} = useAuth()
+  const {  employeeEmail, isManager, isAdmin} = useAuth()
 
 
   return (

@@ -23,27 +23,24 @@ const Event = ({ eventId }) => {
         console.log(event)
 
         return (
-            <tr className="table__row">
-                {/* <td className="table__cell event__status">
-                    {event.completed
-                        ? <span className="event__status--completed">Completed</span>
-                        : <span className="event__status--open">Open</span>
-                    }
-                </td> */}
-                {/* <td className="table__cell event__created">{created}</td>
-                <td className="table__cell event__updated">{updated}</td> */}
-                <td className="table__cell">{event.eventTitle}</td>
-                <td className="table__cell">{event.employeeEmail}</td>
 
-                <td className="table__cell">
+         
+            <tr className="border-2 border-soft-gray">
+                <td className="p-2 m-2">{event.eventTitle}</td>
+                <td className="p-2 m-2">{event.eventPrice} €</td>
+                <td className="p-2 m-2">{event.eventStartDate}</td>
+                <td className="p-2 m-2">{event.eventPrice}</td>
+
+                <td className="p-2 m-2">
                     <button
                         className="icon-button table__button"
                         onClick={handleEdit}
-                    >
+                        >
                         <FontAwesomeIcon icon={faPenToSquare} />
                     </button>
                 </td>
             </tr>
+                    
         )
 
     } else return null

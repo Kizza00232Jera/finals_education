@@ -18,3 +18,7 @@ body {
   .text-color-white {
     color: white;
   }
+
+  .w-main {
+    width: calc(100vw - 48px);
+  }
