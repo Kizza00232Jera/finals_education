@@ -60,6 +60,7 @@ const DashHeader = () => {
         )
     }
 
+
     let newEmployeeButton = null
     if (EMPLOYEES_REGEX.test(pathname)) {
         newEmployeeButton = (
