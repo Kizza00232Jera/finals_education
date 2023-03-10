@@ -1,9 +1,9 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { selectAllEmployees } from '../employees/employeesApiSlice'
-import NewEventForm from './NewEventForm'
+import { selectAllEmployees } from '../features/employees/employeesApiSlice'
+import NewEventForm from '../features/events/NewEventForm'
 
-const NewEvent = () => {
+const NewEventPage = () => {
   const employees = useSelector(selectAllEmployees)
 
   if (!employees?.length) return <p>Not Currently Available</p>
@@ -15,4 +15,4 @@ const NewEvent = () => {
   return content
 }
 
-export default NewEvent
+export default NewEventPage

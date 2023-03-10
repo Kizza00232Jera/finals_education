@@ -32,6 +32,8 @@ const EventsList = () => {
   if (isSuccess) {
       const { ids, entities } = events
 
+      //this only shows my educations, but for admin it shows all educations
+      //THIS IS HOW TO FILTER EVENTS BY DEPARTMENT AND TYPE
     let filteredIds
     if (isManager || isAdmin) {
         filteredIds = [...ids]
@@ -41,20 +43,28 @@ const EventsList = () => {
 
     const tableContent = ids?.length && filteredIds.map(eventId => <Event key={eventId} eventId={eventId} />)
 
+    let editLabel = null
+    if (isManager || isAdmin) {
+        editLabel = (
+          <th scope="col" className="">Edit</th>
+
+        )         
+    }
+
       content = (
         <div>
               <h1>Educations</h1>
           <table className="w-full text-left ">
-              <thead classname="border  rounded-lg ">
+              <thead className="border  rounded-lg ">
                   <tr>
                       <th scope="col" className="">Title</th>
                       <th scope="col" className="">Price</th>
                       <th scope="col" className="">Start Date</th>
                       <th scope="col" className="">Likes</th>
-                      <th scope="col" className="">Edit</th>
+                      {editLabel}
                   </tr>
               </thead>
-              <tbody classname="">
+              <tbody className="">
               {tableContent} 
               </tbody>
           </table>

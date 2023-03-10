@@ -4,16 +4,16 @@ import Public from './pages/Public';
 import Login from './features/auth/Login';
 import DashLayout from './components/DashLayout';
 import Welcome from './features/auth/Welcome';
-import EmployeesList from './features/employees/EmployeesList';
 import EditEmployee from './features/employees/EditEmployee';
 import NewEmployeeForm from './features/employees/NewEmployeeForm';
 import EditEvent from './features/events/EditEvent';
-import NewEvent from './features/events/NewEvent';
+import NewEvent from './pages/NewEventPage';
 import Prefetch from './features/auth/Prefetch';
 import PersistLogin from './features/auth/PersistLogin';
 import RequireAuth from './features/auth/RequireAuth';
 import { ROLES } from './config/roles';
-import EducationsPage from './pages/EducationsPage';
+import EventsPage from './pages/EventsPage';
+import EmployeesPage from './pages/EmployeesPage';
 
 function App() {
   return (
@@ -30,16 +30,18 @@ function App() {
               <Route path="dash" element={<DashLayout />}>
                 <Route index element={<Welcome />} />
 
-                <Route element={<RequireAuth allowedRoles={[ROLES.Manager, ROLES.Admin]} />}>
+              
+              {/* <Route element={<RequireAuth allowedRoles={[ROLES.Manager, ROLES.Admin]} />}>*/}  
+                <Route element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}>
                   <Route path="employees">
-                    <Route index element={<EmployeesList />} />
+                    <Route index element={<EmployeesPage />} />
                     <Route path=":id" element={<EditEmployee />} />
                     <Route path="new" element={<NewEmployeeForm />} />
                   </Route>
                 </Route>
 
                 <Route path="events">
-                  <Route index element={<EducationsPage />} />
+                  <Route index element={<EventsPage />} />
                   <Route path=":id" element={<EditEvent />} />
                   <Route path="new" element={<NewEvent />} />
                 </Route>

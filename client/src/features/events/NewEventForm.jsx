@@ -67,6 +67,7 @@ const NewEventForm = () => {
             await addNewEvent({ employeeEmail, eventTitle, eventCity, eventVenue, eventStartDate, eventEndDate, eventDeadline, eventDuration, eventPrice, eventWebLink, eventDescription })
         }
     }
+    
 
     //   const options = employees.map(employee => {
     //     return (

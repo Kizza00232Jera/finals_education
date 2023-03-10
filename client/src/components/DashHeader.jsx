@@ -1,11 +1,12 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faRightFromBracket,
-         faFileCirclePlus,
-         faFilePen,
-         faUserGear,
-         faUserPlus,
-        } from "@fortawesome/free-solid-svg-icons"
+import {
+    faRightFromBracket,
+    faFileCirclePlus,
+    faFilePen,
+    faUserGear,
+    faUserPlus,
+} from "@fortawesome/free-solid-svg-icons"
 import { useNavigate, Link, useLocation } from 'react-router-dom'
 
 import { useSendLogoutMutation } from '../features/auth/authApiSlice'
@@ -39,7 +40,7 @@ const DashHeader = () => {
     const onEmployeesClicked = () => navigate('/dash/employees')
 
 
-  
+
 
     //IF I WANNA ADD CLASS
     // let dashClass = null
@@ -126,22 +127,23 @@ const DashHeader = () => {
         )
     }
 
-  const content = (
-    <>
-    <p>{error?.data?.message}</p>
+    const content = (
+        <>
+            <p>{error?.data?.message}</p>
 
-   <header>
-    <div>
-        <Link to="/">
-            <h1>Educations</h1>
-            <p>{pathname}</p>
-        </Link>
-    </div>
-   </header>
-    </>
-  )
+            <header>
+                <div>
+                    <Link to="/">
+                        <h1>Title - Dynamic</h1>
+                        <p>{pathname}</p>
+                            {buttonContent}
+                    </Link>
+                </div>
+            </header>
+        </>
+    )
 
-return content
+    return content
 }
 
 export default DashHeader

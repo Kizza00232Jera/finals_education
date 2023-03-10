@@ -35,11 +35,13 @@ const EmployeesList = () => {
     //   console.log(employees)
     //   console.log(tableContent)
     content = (
-      <table className="table table--employees">
-        <thead className="table__thead">
+      <table className="w-full text-left ">
+              <thead className="border  rounded-lg ">
           <tr>
             <th scope="col" className="table__th employee__employeename">Employeename</th>
+            <th scope="col" className="table__th employee__roles">Department</th>
             <th scope="col" className="table__th employee__roles">Roles</th>
+            <th scope="col" className="table__th employee__roles">AvailableBudget</th>
             <th scope="col" className="table__th employee__edit">Edit</th>
           </tr>
         </thead>

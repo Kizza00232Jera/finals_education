@@ -20,18 +20,24 @@ const Employee = ({ employeeId }) => {
 
         //console.log(employee)
         return (
-            <tr className="table__row employee">
-                <td className={`table__cell`}>{employee.employeeName}</td>
-                <td className={`table__cell`}>{employeeRolesString}</td>
-                <td className={`table__cell`}>
-                    <button
-                        className="icon-button table__button"
-                        onClick={handleEdit}
-                    >
-                        <FontAwesomeIcon icon={faPenToSquare} />
-                    </button>
-                </td>
-            </tr>
+            
+            
+              <tr className="border-2 border-soft-gray">
+              <td className="p-2 m-2">{employee.employeeName}</td>
+              <td className="p-2 m-2">{employee.employeeRole} </td>
+              <td className="p-2 m-2">{employee.employeeRole}</td>
+              <td className="p-2 m-2">{employee.employeeBudget} €</td>
+
+              <td className="p-2 m-2">
+                  <button
+                      className="icon-button table__button"
+                      onClick={handleEdit}
+                      >
+                      <FontAwesomeIcon icon={faPenToSquare} />
+                  </button>
+              </td>
+          </tr>
+                          
         )
 
     } else return null

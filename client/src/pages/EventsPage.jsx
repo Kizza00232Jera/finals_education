@@ -1,13 +1,13 @@
 import React from 'react'
 import Footer from '../components/Footer'
-import DashHeader from '../components/DashHeader'
 import EventsList from '../features/events/EventsList'
 import EventsAddBtn from '../features/events/EventsAddBtn'
+import EventsHeader from '../features/events/EventsHeader'
 
-const EducationsPage = () => {
+const EventsPage = () => {
   return (
     <div>
-      <DashHeader />
+      <EventsHeader />
       <EventsAddBtn />
       <EventsList/>
       <Footer />
@@ -16,4 +16,4 @@ const EducationsPage = () => {
 }
 
 
-export default EducationsPage
+export default EventsPage
