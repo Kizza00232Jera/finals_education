@@ -14,7 +14,8 @@ module.exports = {
       'rich-gray':'#505050',
       'power-gray':'#858585',
       'smoke-gray': '#A4A4A4',
-      'soft-gray': '#DEDEDE'
+      'soft-gray': '#DEDEDE',
+      'invisible-gray': '#F5F5F5'
     },
     extend: {
       spacing: {

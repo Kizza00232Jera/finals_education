@@ -67,7 +67,7 @@ const NewEventForm = () => {
             await addNewEvent({ employeeEmail, eventTitle, eventCity, eventVenue, eventStartDate, eventEndDate, eventDeadline, eventDuration, eventPrice, eventWebLink, eventDescription })
         }
     }
-    
+
 
     //   const options = employees.map(employee => {
     //     return (
@@ -80,6 +80,15 @@ const NewEventForm = () => {
 
     const errClass = isError ? "errmsg" : "offscreen"
 
+    const saveClass = canSave ?
+
+        "w-36 text-center p-2 bg-primary text-sm font-bold rounded text-color-white mb-4 block" :
+        "w-36 text-center p-2 bg-invisible-gray text-sm font-bold rounded text-color-power-gray mb-4 block"
+
+
+
+
+
     const content = (
         <>
 
@@ -88,12 +97,12 @@ const NewEventForm = () => {
             <form className="form" onSubmit={onSaveEventClicked}>
                 <div className="text-lg">
                     <h2>Create Event</h2>
-                   
+
                 </div>
                 <div className='w-80'>
 
                     <label className="block" htmlFor="event-title">
-                        Title:</label>
+                        Title*</label>
                     <input
                         id="event-title"
                         name="title"
@@ -107,7 +116,7 @@ const NewEventForm = () => {
                 </div>
                 <div className='w-80'>
                     <label className="block" htmlFor="event-enddate">
-                        Deadline:</label>
+                        Deadline*</label>
                     <input
                         id="event-enddate"
                         name="startdate"
@@ -123,7 +132,7 @@ const NewEventForm = () => {
                 <div className="w-80">
 
                     <label className="form__label" htmlFor="event-city">
-                        City:</label>
+                        City*</label>
                     <input
                         id="event-city"
                         name="city"
@@ -137,7 +146,7 @@ const NewEventForm = () => {
                 </div>
                 <div className='w-80'>
                     <label className="form__label" htmlFor="event-venue">
-                        Venue:</label>
+                        Venue*</label>
                     <input
                         id="event-venue"
                         name="venue"
@@ -150,117 +159,117 @@ const NewEventForm = () => {
                     />
                 </div>
                 <div className='w-80'>
-                <label className="form__label" htmlFor="event-startdate">
-                    Start Date:</label>
-                <input
-                    id="event-startdate"
-                    name="startdate"
-                    type="text"
-                    autoComplete="off"
-                    value={eventStartDate}
-                    placeholder="123"
-                    className='border rounded-lg text-base w-80 block'
-                    onChange={onStartDateChanged}
+                    <label className="form__label" htmlFor="event-startdate">
+                        Start Date*</label>
+                    <input
+                        id="event-startdate"
+                        name="startdate"
+                        type="text"
+                        autoComplete="off"
+                        value={eventStartDate}
+                        placeholder="123"
+                        className='border rounded-lg text-base w-80 block'
+                        onChange={onStartDateChanged}
                     />
-                    </div>
+                </div>
                 <div className='w-80'>
 
-                <label className="form__label" htmlFor="event-deadline">
-                    End date:</label>
-                <input
-                    id="event-deadline"
-                    name="deadline"
-                    type="text"
-                    autoComplete="off"
-                    value={eventEndDate}
-                    placeholder="123"
-                    className='border rounded-lg text-base w-80 block'
-                    onChange={onEndDateChanged}
+                    <label className="form__label" htmlFor="event-deadline">
+                        End date*</label>
+                    <input
+                        id="event-deadline"
+                        name="deadline"
+                        type="text"
+                        autoComplete="off"
+                        value={eventEndDate}
+                        placeholder="123"
+                        className='border rounded-lg text-base w-80 block'
+                        onChange={onEndDateChanged}
                     />
-                    </div>
+                </div>
                 <div className='w-80'>
 
-                <label className="form__label" htmlFor="event-duration">
-                    Duration:</label>
-                <input
-                    id="event-duration"
-                    name="duration"
-                    type="text"
-                    autoComplete="off"
-                    value={eventDuration}
-                    placeholder="123"
-                    className='border rounded-lg text-base w-80 block'
-                    onChange={onDurationChanged}
+                    <label className="form__label" htmlFor="event-duration">
+                        Duration*</label>
+                    <input
+                        id="event-duration"
+                        name="duration"
+                        type="text"
+                        autoComplete="off"
+                        value={eventDuration}
+                        placeholder="123"
+                        className='border rounded-lg text-base w-80 block'
+                        onChange={onDurationChanged}
                     />
-                    </div>
+                </div>
                 <div className='w-80'>
 
-                <label className="form__label" htmlFor="event-price">
-                    Price (in euro) :</label>
-                <input
-                    id="event-price"
-                    name="price"
-                    type="text"
-                    autoComplete="off"
-                    value={eventPrice}
-                    placeholder="123"
-                    className='border rounded-lg text-base w-80 block'
-                    onChange={onPriceChanged}
+                    <label className="form__label" htmlFor="event-price">
+                        Price (in euro)*</label>
+                    <input
+                        id="event-price"
+                        name="price"
+                        type="text"
+                        autoComplete="off"
+                        value={eventPrice}
+                        placeholder="123"
+                        className='border rounded-lg text-base w-80 block'
+                        onChange={onPriceChanged}
                     />
-                    </div>
+                </div>
                 <div className='w-80'>
 
-                <label className="form__label" htmlFor="event-weblink">
-                    Web Link:</label>
-                <input
-                    id="event-price"
-                    name="weblink"
-                    type="text"
-                    autoComplete="off"
-                    value={eventWebLink}
-                    placeholder="Link of the event"
-                    className='border rounded-lg text-base w-80 block'
-                    onChange={onWebLinkChanged}
+                    <label className="form__label" htmlFor="event-weblink">
+                        Web Link*</label>
+                    <input
+                        id="event-price"
+                        name="weblink"
+                        type="text"
+                        autoComplete="off"
+                        value={eventWebLink}
+                        placeholder="Link of the event"
+                        className='border rounded-lg text-base w-80 block'
+                        onChange={onWebLinkChanged}
                     />
-                    </div>
+                </div>
                 <div className='w-80'>
 
-                <label className="form__label" htmlFor="event-description">
-                    Event and price breakdown:</label>
-                <input
-                    id="event-description"
-                    name="description"
-                    type="text"
-                    autoComplete="off"
-                    value={eventDescription}
-                    placeholder="Placeholder"
-                    className='border rounded-lg text-base w-80 block'
-                    onChange={onDescriptionChanged}
+                    <label className="form__label" htmlFor="event-description">
+                        Event and price breakdown*</label>
+                    <input
+                        id="event-description"
+                        name="description"
+                        type="text"
+                        autoComplete="off"
+                        value={eventDescription}
+                        placeholder="Placeholder"
+                        className='border rounded-lg text-base w-80 block'
+                        onChange={onDescriptionChanged}
                     />
-                    </div>
+                </div>
                 <div className='w-80'>
 
-                <label className="form__label" htmlFor="event-usercreated">
-                    User Created:</label>
-                <input
-                    id="event-usercreated"
-                    name="usercreated"
-                    type="text"
-                    //autoComplete="off"
-                    value={employeeEmail}
-                    className='border rounded-lg text-base w-80 block'
-                    onChange={onEmployeeEmailChanged}
+                    <label className="form__label" htmlFor="event-usercreated">
+                        User Created*</label>
+                    <input
+                        id="event-usercreated"
+                        name="usercreated"
+                        type="text"
+                        //autoComplete="off"
+                        value={employeeEmail}
+                        className='border rounded-lg text-base w-80 block'
+                        onChange={onEmployeeEmailChanged}
                     />
-                    </div>
-                    <div className="mt-5">
-                  <button
-                      className="w-36 text-center p-2 bg-primary text-sm font-bold rounded text-color-white mb-4 block"
-                      title="Save"
-                      disabled={!canSave}
-                  >
-                      Save
-                  </button>
-              </div>
+                </div>
+                <div className="mt-5">
+                    <button
+                        className={saveClass}
+                        title="Save"
+                        disabled={!canSave}
+                    >
+                        Create
+                    </button>
+                </div>
             </form>
         </>
     )

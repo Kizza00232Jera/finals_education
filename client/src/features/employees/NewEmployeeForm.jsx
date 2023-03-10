@@ -132,9 +132,8 @@ const NewEmployeeForm = () => {
 
     //classes that we might or might not want to apply -- update w tailwind classes
     const errClass = isError ? "errmsg" : "offscreen"
-    //   const validUserClass = !validUsername ? 'form__input--incomplete' : ''
-    //   const validPwdClass = !validPassword ? 'form__input--incomplete' : ''
-    //   const validRolesClass = !Boolean(roles.length) ? 'form__input--incomplete' : ''
+    const saveClass = canSave ? "w-36 text-center p-2 bg-primary text-sm font-bold rounded text-color-white mb-4 block" :
+    "w-36 text-center p-2 bg-invisible-gray text-sm font-bold rounded text-color-power-gray mb-4 block"
 
 
     const content = (
@@ -142,118 +141,145 @@ const NewEmployeeForm = () => {
             <p className={errClass}>{error?.data?.message}</p>
             <form className="form" onSubmit={onSaveEmployeeClicked}>
                 <div className="form__title-row">
-                    <h2>New Employee</h2>
-                    <div className="form__action-buttons">
-                        <button
-                            className="icon-button"
-                            title="Save"
-                            disabled={!canSave}
-                        >
-                            <FontAwesomeIcon icon={faSave} />
-                        </button>
-                    </div>
+                    <h2>Add New Employee</h2>
                 </div>
-                <label className="form__label" htmlFor="name">
-                    Name : <span className="nowrap">[3-20 letters]</span></label>
-                <input
+                <div className='w-80'>
+                    <label className="form__label" htmlFor="name">
+                        Name*<span className="nowrap">[3-20 letters]</span></label>
+                    <input
 
-                    id="name"
-                    name="name"
-                    type="text"
-                    autoComplete="off"
-                    value={employeeName}
-                    onChange={onNameChanged}
-                />
-                <label className="form__label" htmlFor="employeeSurname">
-                    Surname: <span className="nowrap">[3-20 letters]</span></label>
-                <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        autoComplete="off"
+                        placeholder="Name"
+                        className='border rounded-lg text-base w-80 block'
+                        value={employeeName}
+                        onChange={onNameChanged}
+                    />
+                    <div className='w-80'>
+                    </div>
+                    <label className="form__label" htmlFor="employeeSurname">
+                        Surname*<span className="nowrap">[3-20 letters]</span></label>
+                    <input
 
-                    id="employeeSurname"
-                    name="employeeSurname"
-                    type="text"
-                    autoComplete="off"
-                    value={employeeSurname}
-                    onChange={onSurnameChanged}
-                />
+                        id="employeeSurname"
+                        name="employeeSurname"
+                        type="text"
+                        autoComplete="off"
+                        value={employeeSurname}
+                        placeholder="Surname"
+                        className='border rounded-lg text-base w-80 block'
+                        onChange={onSurnameChanged}
+                    />
+                </div>
+                <div className='w-80'>
+                    <label className="form__label" htmlFor="password">
+                        Password* <span className="nowrap">[4-12 chars incl. !@#$%]</span></label>
+                    <input
+                        id="password"
+                        name="password"
+                        type="password"
+                        placeholder="Password"
+                        className='border rounded-lg text-base w-80 block'
+                        value={employeePassword}
+                        onChange={onPasswordChanged}
+                    />
+                </div>
+                <div className='w-80'>
+                    <label className="form__label" htmlFor="email">
+                        Email* <span className="nowrap">[incl @]</span></label>
+                    <input
+                        id="email"
+                        name="email"
+                        type="text"
+                        placeholder="email"
+                        className='border rounded-lg text-base w-80 block'
+                        autoComplete="off"
+                        value={employeeEmail}
+                        onChange={onEmailChanged}
+                    />
+                </div>
+                <div className='w-80'>
+                    <label className="form__label" htmlFor="departments">
+                        ASSIGNED DEPARTMENTS*</label>
+                    <select
+                        id="departments"
+                        name="departments"
+                        multiple={true}
+                        size="3"
+                        value={employeeDepartment}
+                        onChange={onDepartmentsChanged}
+                    >
+                        {options2}
+                    </select>
+                </div>
+                <div className='w-80'>
+                    <label className="form__label" htmlFor="roles">
+                        ASSIGNED ROLES*</label>
+                    <select
+                        id="roles"
+                        name="roles"
 
-                <label className="form__label" htmlFor="password">
-                    Password: <span className="nowrap">[4-12 chars incl. !@#$%]</span></label>
-                <input
-
-                    id="password"
-                    name="password"
-                    type="password"
-                    value={employeePassword}
-                    onChange={onPasswordChanged}
-                />
-
-                <label className="form__label" htmlFor="email">
-                    Email: <span className="nowrap">[incl @]</span></label>
-                <input
-
-                    id="email"
-                    name="email"
-                    type="text"
-                    autoComplete="off"
-                    value={employeeEmail}
-                    onChange={onEmailChanged}
-                />
-                <label className="form__label" htmlFor="departments">
-                    ASSIGNED DEPARTMENTS:</label>
-                <select
-                    id="departments"
-                    name="departments"
-                    multiple={true}
-                    size="3"
-                    value={employeeDepartment}
-                    onChange={onDepartmentsChanged}
-                >
-                    {options2}
-                </select>
-                <label className="form__label" htmlFor="roles">
-                    ASSIGNED ROLES:</label>
-                <select
-                    id="roles"
-                    name="roles"
-
-                    multiple={true}
-                    size="3"
-                    value={employeeRole}
-                    onChange={onRolesChanged}
-                >
-                    {options}
-                </select>
-                <label className="form__label" htmlFor="employeeFund">
-                    Fund: <span className="nowrap">[number]</span></label>
-                <input
-                    id="employeeFund"
-                    name="employeeFund"
-                    type="text"
-                    autoComplete="off"
-                    value={employeeFund}
-                    onChange={onFundChanged}
-                />
-                <label className="form__label" htmlFor="employeeSpent">
-                    Spent: <span className="nowrap">[number]</span></label>
-                <input
-                    id="employeeSpent"
-                    name="employeeSpent"
-                    type="text"
-                    autoComplete="off"
-                    value={employeeSpent}
-                    onChange={onSpentChanged}
-                />
-                <label className="form__label" htmlFor="employeeBudget">
-                    Remaining Budget: <span className="nowrap">[number]</span></label>
-                <input
-                    id="employeeBudget"
-                    name="employeeBudget"
-                    type="text"
-                    autoComplete="off"
-                    value={employeeBudget}
-                    onChange={onBudgetChanged}
-                />
-
+                        multiple={true}
+                        size="3"
+                        value={employeeRole}
+                        onChange={onRolesChanged}
+                    >
+                        {options}
+                    </select>
+                </div>
+                <div className='w-80'>
+                    <label className="form__label" htmlFor="employeeFund">
+                        Fund*</label>
+                    <input
+                        id="employeeFund"
+                        name="employeeFund"
+                        type="text"
+                        autoComplete="off"
+                        value={employeeFund}
+                        onChange={onFundChanged}
+                        placeholder="$"
+                        className='border rounded-lg text-base w-80 block'
+                    />
+                </div>
+                <div className='w-80'>
+                    <label className="form__label" htmlFor="employeeSpent">
+                        Spent*</label>
+                    <input
+                        id="employeeSpent"
+                        name="employeeSpent"
+                        type="text"
+                        autoComplete="off"
+                        value={employeeSpent}
+                        placeholder="$"
+                        className='border rounded-lg text-base w-80 block'
+                        onChange={onSpentChanged}
+                    />
+                </div>
+                <div className='w-80'>
+                    <label className="form__label" htmlFor="employeeBudget">
+                        Remaining Budget* </label>
+                    <input
+                        id="employeeBudget"
+                        name="employeeBudget"
+                        type="text"
+                        autoComplete="off"
+                        value={employeeBudget}
+                        placeholder="$"
+                        className='border rounded-lg text-base w-80 block'
+                        onChange={onBudgetChanged}
+                    />
+                </div>
+                <div className="mt-5">
+                    <button
+                        className={saveClass}
+                        title="Save"
+                        disabled={!canSave}
+                    >
+                        Create
+                    </button>
+                </div>
             </form>
         </>
     )

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { useUpdateEmployeeMutation, useDeleteEmployeeMutation } from "./employeesApiSlice"
 import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons"
+import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { ROLES } from "../../config/roles"
 import { DEPARTMENTS } from "../../config/departments"
 
@@ -182,7 +182,7 @@ const EditEmployeeForm = ({ employee }) => {
                             onClick={onSaveEmployeeClicked}
                             disabled={!canSave}
                         >
-                            <FontAwesomeIcon icon={faTrashCan} />
+                            <FontAwesomeIcon icon={faSave} />
                         </button>
                         <button
                             className="icon-button"
