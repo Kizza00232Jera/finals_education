@@ -43,7 +43,7 @@ const Login = () => {
         dispatch(setCredentials({ accessToken }))
         setEmployeeEmail('')
         setEmployeePassword('')
-        navigate('/dash')
+        navigate('/dash/events')
       } catch (err) {
         if (!err.status) {
                 setErrMsg('No Server Response');
@@ -117,7 +117,7 @@ const Login = () => {
                 <div className='grow'></div>
                 <Link to='/'><p className='text-primary font-extrabold'>Forgot Password?</p></Link>
                         </div>
-                <button className='w-500 text-center p-2 bg-primary text-sm font-bold rounded text-color-white mb-4'>Log in</button>
+                <button className='w-500 text-center p-2 bg-primary text-sm font-bold rounded text-color-white mb-4 block'>Log in</button>
                 <button disabled className='w-500 text-center p-2 bg-power-gray text-sm font-bold rounded text-color-white cursor-not-allowed'>Sign in with google</button>
             </form>
         </main>

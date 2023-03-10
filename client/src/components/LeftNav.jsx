@@ -92,7 +92,7 @@ const LeftNav = () => {
     }
 
     const content = (
-        <div className='max-w-sm'>
+        <div className='max-w-sm border-r-2 border-soft-gray min-h-screen'>
         <div>
           <img src={edulogo} className="object-fill h-12 w-40" alt="logo" />
         </div>

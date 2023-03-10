@@ -29,7 +29,6 @@ app.use('/', require('./routes/root'))
 app.use('/auth', require('./routes/authRoutes'))
 app.use('/employees', require('./routes/employeeRoutes'))
 app.use('/events', require('./routes/eventRoutes'))
-app.use('/books', require('./routes/bookRoutes'))
 
 
 

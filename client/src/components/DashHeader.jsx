@@ -132,18 +132,9 @@ const DashHeader = () => {
    <header>
     <div>
         <Link to="/">
-            <h1>EDU</h1>
+            <h1>Educations</h1>
+            <p>{pathname}</p>
         </Link>
-        <nav>
-            <Link to="">EDU</Link>
-            <Link to="">Educations</Link>
-            <Link to="">Library</Link>
-            <Link to="">My educations</Link>
-            <nav>
-            {buttonContent}
-            </nav>
-            <div>Profile</div>
-        </nav>
     </div>
    </header>
     </>

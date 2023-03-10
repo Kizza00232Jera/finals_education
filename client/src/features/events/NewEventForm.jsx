@@ -82,6 +82,7 @@ const errClass = isError ? "errmsg" : "offscreen"
 
 const content = (
   <>
+    
       <p className={errClass}>{error?.data?.message}</p>
 
       <form className="form" onSubmit={onSaveEventClicked}>
