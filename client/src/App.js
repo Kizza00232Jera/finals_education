@@ -8,11 +8,13 @@ import EditEmployee from './features/employees/EditEmployee';
 import NewEmployeeForm from './features/employees/NewEmployeeForm';
 import EditEvent from './features/events/EditEvent';
 import NewEvent from './pages/NewEventPage';
+import EventPage from './pages/EventPage';
 import Prefetch from './features/auth/Prefetch';
 import PersistLogin from './features/auth/PersistLogin';
 import RequireAuth from './features/auth/RequireAuth';
 import { ROLES } from './config/roles';
 import EventsPage from './pages/EventsPage';
+import EmployeePage from './pages/EmployeePage';
 import EmployeesPage from './pages/EmployeesPage';
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
                     <Route index element={<EmployeesPage />} />
                     <Route path=":id" element={<EditEmployee />} />
                     <Route path="new" element={<NewEmployeeForm />} />
+                  <Route path="employee/:id" element={<EmployeePage />} />
+
                   </Route>
                 </Route>
 
@@ -44,6 +48,7 @@ function App() {
                   <Route index element={<EventsPage />} />
                   <Route path=":id" element={<EditEvent />} />
                   <Route path="new" element={<NewEvent />} />
+                  <Route path="event/:id" element={<EventPage />} />
                 </Route>
 
 

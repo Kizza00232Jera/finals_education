@@ -14,6 +14,8 @@ const Employee = ({ employeeId }) => {
 
     if (employee) {
         const handleEdit = () => navigate(`/dash/employees/${employeeId}`)
+        const handleEmployeePage = () => navigate(`/dash/employees/employee/${employeeId}`)
+
 
         const employeeRolesString = employee.employeeRole.toString().replaceAll(',', ', ')
         const employeeDepartmentsString = employee.employeeDepartment.toString().replaceAll(',', ', ')
@@ -24,7 +26,7 @@ const Employee = ({ employeeId }) => {
             
             
               <div className="border-2 border-soft-gray flex flex-row">
-              <div className="p-2 m-2 basis-4/12">{employee.employeeName} {employee.employeeSurname}</div>
+              <div onClick={handleEmployeePage} className="p-2 m-2 basis-4/12">{employee.employeeName} {employee.employeeSurname}</div>
               <div className="p-2 m-2 basis-2/12">{employeeDepartmentsString} </div>
               <div className="p-2 m-2 basis-3/12">{employeeRolesString}</div>
               <div className="p-2 m-2 basis-2/12">{employee.employeeBudget} €</div>

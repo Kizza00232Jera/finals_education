@@ -18,6 +18,7 @@ const Event = ({ eventId }) => {
     if (event) { 
 
         const handleEdit = () => navigate(`/dash/events/${eventId}`)
+        const handleEventPage = () => navigate(`/dash/events/event/${eventId}`)
         
         let editBtn = null
         if (isManager || isAdmin) {
@@ -40,10 +41,10 @@ const Event = ({ eventId }) => {
 
          
             <div className="border-2 border-soft-gray flex flex-row">
-                <div className="basis-5/12 p-2 m-2">{event.eventTitle}</div>
+                <div onClick={handleEventPage} className="basis-5/12 p-2 m-2">{event.eventTitle}</div>
                 <div className="p-2 m-2 basis-2/12 ">{event.eventPrice} €</div>
                 <div className="p-2 m-2 basis-2/12 ">{event.eventStartDate}</div>
-                <div className="p-2 m-2 basis-2/12 ">123 </div>
+                <div className="p-2 m-2 basis-2/12 ">123</div>
                 <div className="p-2 m-2 basis-1/12 ">       
                 {editBtn}
                     </div>
