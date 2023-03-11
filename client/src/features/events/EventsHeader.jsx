@@ -10,7 +10,7 @@ const EventsHeader = () => {
     <header>
     <div>
         <Link to="/dash/events">
-            <h1>Events</h1>
+            <h1>Educations</h1>
             <p>{pathname}</p>
 
         </Link>

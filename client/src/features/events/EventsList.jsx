@@ -46,28 +46,28 @@ const EventsList = () => {
     let editLabel = null
     if (isManager || isAdmin) {
         editLabel = (
-          <th scope="col" className="">Edit</th>
+          <div className="basis-1/12 p-2 m-2">Edit</div>
 
         )         
     }
 
       content = (
         <div>
-              <h1>Educations</h1>
-          <table className="w-full text-left ">
-              <thead className="border  rounded-lg ">
-                  <tr>
-                      <th scope="col" className="">Title</th>
-                      <th scope="col" className="">Price</th>
-                      <th scope="col" className="">Start Date</th>
-                      <th scope="col" className="">Likes</th>
+             
+          <div className="w-full text-left ">
+              <div className="border rounded-lg">
+                  <div className='flex flex-row'>
+                      <div className="basis-5/12 p-2 m-2">Title</div>
+                      <div  className="basis-2/12 p-2 m-2">Price</div>
+                      <div className="basis-2/12 p-2 m-2">Start Date</div>
+                      <div  className="basis-2/12 p-2 m-2">Likes</div>
                       {editLabel}
-                  </tr>
-              </thead>
-              <tbody className="">
+                  </div>
+              </div>
+              <div className="flex flex-col">
               {tableContent} 
-              </tbody>
-          </table>
+              </div>
+          </div>
         </div>
       )
     }

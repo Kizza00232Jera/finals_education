@@ -35,20 +35,18 @@ const EmployeesList = () => {
     //   console.log(employees)
     //   console.log(tableContent)
     content = (
-      <table className="w-full text-left ">
-              <thead className="border  rounded-lg ">
-          <tr>
-            <th scope="col" className="table__th employee__employeename">Employeename</th>
-            <th scope="col" className="table__th employee__roles">Department</th>
-            <th scope="col" className="table__th employee__roles">Roles</th>
-            <th scope="col" className="table__th employee__roles">AvailableBudget</th>
-            <th scope="col" className="table__th employee__edit">Edit</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div className="w-full text-left ">
+          <div className='border  rounded-lg flex flex-row '>
+            <div className="p-2 m-2 basis-4/12">Employee Name</div>
+            <div className="p-2 m-2 basis-2/12">Department</div>
+            <div className="p-2 m-2 basis-3/12">Roles</div>
+            <div className="p-2 m-2 basis-2/12">AvailableBudget</div>
+            <div className="p-2 m-2 basis-1/12">Edit</div>
+          </div>
+        <div className='flex flex-col'>
           {tableContent}
-        </tbody>
-      </table>
+        </div>
+      </div>
     )
   }
 

@@ -23,7 +23,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
             async onQueryStarted(arg, { dispatch, queryFulfilled }) {
                 try {
                     const { data } = await queryFulfilled
-                    //console.log(data)
+                    console.log(data)
                     //this will set token to null in local state, clear cache..
                     dispatch(logOut())
                     setTimeout(() => {  

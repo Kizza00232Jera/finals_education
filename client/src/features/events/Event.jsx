@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPenToSquare, faUserGear } from "@fortawesome/free-solid-svg-icons"
-import { Link, useNavigate } from 'react-router-dom'
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
+import { useNavigate } from 'react-router-dom'
 
 import { useSelector } from 'react-redux'
 import { selectEventById } from './eventsApiSlice'
@@ -39,18 +39,18 @@ const Event = ({ eventId }) => {
         return (
 
          
-            <tr className="border-2 border-soft-gray">
-                <td className="p-2 m-2">{event.eventTitle}</td>
-                <td className="p-2 m-2">{event.eventPrice} €</td>
-                <td className="p-2 m-2">{event.eventStartDate}</td>
-                <td className="p-2 m-2">123 </td>
-                <td className="p-2 m-2">       
+            <div className="border-2 border-soft-gray flex flex-row">
+                <div className="basis-5/12 p-2 m-2">{event.eventTitle}</div>
+                <div className="p-2 m-2 basis-2/12 ">{event.eventPrice} €</div>
+                <div className="p-2 m-2 basis-2/12 ">{event.eventStartDate}</div>
+                <div className="p-2 m-2 basis-2/12 ">123 </div>
+                <div className="p-2 m-2 basis-1/12 ">       
                 {editBtn}
-                    </td>
+                    </div>
                 
 
                 
-            </tr>
+            </div>
                     
         )
 
