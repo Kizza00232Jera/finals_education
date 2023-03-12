@@ -7,7 +7,7 @@ import Welcome from './features/auth/Welcome';
 import EditEmployee from './features/employees/EditEmployee';
 import NewEmployeeForm from './features/employees/NewEmployeeForm';
 import EditEvent from './features/events/EditEvent';
-import NewEvent from './pages/NewEventPage';
+import NewEventPage from './pages/NewEventPage';
 import EventPage from './pages/EventPage';
 import Prefetch from './features/auth/Prefetch';
 import PersistLogin from './features/auth/PersistLogin';
@@ -16,6 +16,7 @@ import { ROLES } from './config/roles';
 import EventsPage from './pages/EventsPage';
 import EmployeePage from './pages/EmployeePage';
 import EmployeesPage from './pages/EmployeesPage';
+import NewEducationPage from './pages/NewEducationPage'
 
 function App() {
   return (
@@ -38,7 +39,7 @@ function App() {
                   <Route path="employees">
                     <Route index element={<EmployeesPage />} />
                     <Route path=":id" element={<EditEmployee />} />
-                    <Route path="new" element={<NewEmployeeForm />} />
+                    <Route path="new" element={<NewEducationPage />} />
                   <Route path="employee/:id" element={<EmployeePage />} />
 
                   </Route>
@@ -47,7 +48,7 @@ function App() {
                 <Route path="events">
                   <Route index element={<EventsPage />} />
                   <Route path=":id" element={<EditEvent />} />
-                  <Route path="new" element={<NewEvent />} />
+                  <Route path="new" element={<NewEventPage />} />
                   <Route path="event/:id" element={<EventPage />} />
                 </Route>
 

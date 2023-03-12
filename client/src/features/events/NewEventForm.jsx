@@ -153,7 +153,7 @@ const NewEventForm = () => {
                 </div>
                 <div className='w-80'>
 
-                    <label className="block" htmlFor="event-title">
+                    <label className="block">
                         Title*</label>
                     <input
                         id="event-title"
@@ -162,7 +162,7 @@ const NewEventForm = () => {
                         autoComplete="off"
                         value={eventTitle}
                         placeholder="Name of the event"
-                        className='border rounded-lg text-base w-80 block'
+                        className='border rounded-lg text-base w-80 block p-2'
                         onChange={onTitleChanged}
                     />
                 </div>
@@ -176,11 +176,11 @@ const NewEventForm = () => {
                         autoComplete="off"
                         value={eventDeadline}
                         placeholder="Deadline to apply"
-                        className='border rounded-lg text-base w-80 block'
+                        className='border rounded-lg text-base w-80 block p-2'
                         onChange={onDeadlineChanged}
                     />
+                    
                 </div>
-
                 <div className="w-80">
 
                     <label className="form__label" htmlFor="event-city">
@@ -192,7 +192,7 @@ const NewEventForm = () => {
                         autoComplete="off"
                         value={eventCity}
                         placeholder="Event city"
-                        className='border rounded-lg text-base w-80 block'
+                        className='border rounded-lg text-base w-80 block p-2'
                         onChange={onCityChanged}
                     />
                 </div>
@@ -206,7 +206,7 @@ const NewEventForm = () => {
                         autoComplete="off"
                         value={eventVenue}
                         placeholder="Event Venue"
-                        className='border rounded-lg text-base w-80 block'
+                        className='border rounded-lg text-base w-80 block p-2'
                         onChange={onVenueChanged}
                     />
                 </div>
@@ -220,7 +220,7 @@ const NewEventForm = () => {
                         autoComplete="off"
                         value={eventStartDate}
                         placeholder="123"
-                        className='border rounded-lg text-base w-80 block'
+                        className='border rounded-lg text-base w-80 block p-2'
                         onChange={onStartDateChanged}
                     />
                 </div>
@@ -235,7 +235,7 @@ const NewEventForm = () => {
                         autoComplete="off"
                         value={eventEndDate}
                         placeholder="123"
-                        className='border rounded-lg text-base w-80 block'
+                        className='border rounded-lg text-base w-80 block p-2'
                         onChange={onEndDateChanged}
                     />
                 </div>
@@ -250,7 +250,7 @@ const NewEventForm = () => {
                         autoComplete="off"
                         value={eventDuration}
                         placeholder="123"
-                        className='border rounded-lg text-base w-80 block'
+                        className='border rounded-lg text-base w-80 block p-2'
                         onChange={onDurationChanged}
                     />
                 </div>
@@ -265,7 +265,7 @@ const NewEventForm = () => {
                         autoComplete="off"
                         value={eventPrice}
                         placeholder="123"
-                        className='border rounded-lg text-base w-80 block'
+                        className='border rounded-lg text-base w-80 block p-2'
                         onChange={onPriceChanged}
                     />
                 </div>
@@ -280,7 +280,7 @@ const NewEventForm = () => {
                         autoComplete="off"
                         value={eventWebLink}
                         placeholder="Link of the event"
-                        className='border rounded-lg text-base w-80 block'
+                        className='border rounded-lg text-base w-80 block p-2'
                         onChange={onWebLinkChanged}
                     />
                 </div>
@@ -295,7 +295,7 @@ const NewEventForm = () => {
                         autoComplete="off"
                         value={eventDescription}
                         placeholder="Placeholder"
-                        className='border rounded-lg text-base w-80 block'
+                        className='border rounded-lg text-base w-80 block p-2'
                         onChange={onDescriptionChanged}
                     />
                 </div>
@@ -361,7 +361,7 @@ const NewEventForm = () => {
                         name="usercreated"
                         type="text"
                         //autoComplete="on"
-                        className='border rounded-lg text-base w-80 block'
+                        className='border rounded-lg text-base w-80 block p-2'
                         value={employeeEmail}
                         onChange={onEmployeeEmailChanged}
                     />
