@@ -16,6 +16,7 @@ const EventLayout = ({ event }) => {
                     <p>WorkDays {event.eventDuration}</p>
                     <p>Venue {event.eventVenue}</p>
                     <p>User Created {event.employeeEmail}</p>
+                    <p>Requests {event.eventRequests}</p>
                 </div>
             </div>
         </>

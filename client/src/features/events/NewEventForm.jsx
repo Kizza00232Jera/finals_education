@@ -28,10 +28,10 @@ const NewEventForm = () => {
     const [eventWebLink, setWebLink] = useState('')
     const [eventDescription, setDescription] = useState('')
     const [employeeEmail, setEmployeeEmail] = useState('')
-    const [eventDepartment, setDepartment] = useState('')
-    const [eventRequested, setRequested] = useState('')
-    const [eventApproved, setApproved] = useState('')
-    const [eventRejected, setRejected] = useState('')
+    const [eventDepartment, setDepartment] = useState(["All"])
+    const [eventRequested, setRequested] = useState([''])
+    const [eventApproved, setApproved] = useState([''])
+    const [eventRejected, setRejected] = useState([''])
 
 
     useEffect(() => {
@@ -301,7 +301,7 @@ const NewEventForm = () => {
                 </div>
                 <div className='w-80'>
                     <label className="form__label" htmlFor="departments">
-                        DEPARTMENTS*</label>
+                        ASSIGNED DEPARTMENTS*</label>
                     <select
                         id="departments"
                         name="departments"
@@ -316,44 +316,41 @@ const NewEventForm = () => {
                 <div className='w-80'>
                     <label className="form__label" htmlFor="departments">
                         Requested *</label>
-                    <select
+                    <div
                         id="departments"
                         name="departments"
-                        multiple={true}
                         size="3"
                         value={eventRequested}
                         onChange={onRequestedChanged}
                     >
                         -all requests here-
-                    </select>
+                    </div>
                 </div>
                 <div className='w-80'>
                     <label className="form__label" htmlFor="departments">
                         Approved *</label>
-                    <select
+                    <div
                         id="departments"
                         name="departments"
-                        multiple={true}
                         size="3"
                         value={eventApproved}
                         onChange={onApprovedChanged}
                     >
                         -all requests here-
-                    </select>
+                    </div>
                 </div>
                 <div className='w-80'>
                     <label className="form__label" htmlFor="departments">
                         Rejected *</label>
-                    <select
+                    <div
                         id="departments"
                         name="departments"
-                        multiple={true}
                         size="3"
                         value={eventRejected}
                         onChange={onRejectedChanged}
                     >
                         -all requests here-
-                    </select>
+                    </div>
                 </div>
                 <div className='w-80'>
 
@@ -363,9 +360,9 @@ const NewEventForm = () => {
                         id="event-usercreated"
                         name="usercreated"
                         type="text"
-                        //autoComplete="off"
-                        value={employeeEmail}
+                        //autoComplete="on"
                         className='border rounded-lg text-base w-80 block'
+                        value={employeeEmail}
                         onChange={onEmployeeEmailChanged}
                     />
                 </div>
