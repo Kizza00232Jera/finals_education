@@ -1,27 +1,14 @@
-import { faFilter, faPlus, faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faFilter, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
 
 
-const EmployeesHeader = () => {
+const EventsHeader = () => {
 
   const { pathname } = useLocation()
-  const { isManager, isAdmin } = useAuth()
-
-
-  let addEmployeeBtn = null
-  if (isManager || isAdmin) {
-      addEmployeeBtn = (
-        <div className='bg-primary w-fit p-2 rounded-lg text-white font-bold h-fit'>
-        <Link
-          to="http://localhost:3000/dash/employees/new">
-            <FontAwesomeIcon icon={faPlus} /> Add Employee
-        </Link>
-      </div>
-      )         
-  }
+  const { employeeName, employeeEmail, employeeDepartment, employeeRole, employeeSpent, employeeBudget, employeeFund } = useAuth()
 
   return (
     <div className='mb-4'>
@@ -30,14 +17,21 @@ const EmployeesHeader = () => {
     <header className='h-28 flex flex-wrap content-center px-20 bg-white'>
       <div className='flex-grow'>
         <Link to="/dash/employees">
-          <h1 className='text-3xl'>Employees</h1>
+          <h1 className='text-3xl'>My Events</h1>
           <p>{pathname}</p>
         </Link>
       </div>
-      {addEmployeeBtn}
     </header>
             </div>
-    
+            <div className='bg-smoke-gray p-3 py-2 flex-none'>
+            <p className='text-sm text-rich-gray'>Current User:{employeeEmail}</p>
+            <p className='text-sm font-bold text-black'>{employeeFund}</p>
+            <p className='text-sm font-bold text-black'>{employeeName}</p>
+            <p className='text-sm font-bold text-black'>{employeeDepartment}</p>
+            <p className='text-sm font-bold text-black'>{employeeRole}</p>
+            <p className='text-sm font-bold text-black'>{employeeSpent}</p>
+            <p className='text-sm font-bold text-black'>{employeeBudget}</p>
+            </div>
     <div className='flex gap-4 px-20 pt-4'>
 
     <div className="flex rounded-lg border border-solid border-soft-gray max-w-md">
@@ -68,4 +62,4 @@ const EmployeesHeader = () => {
   )
 }
 
-export default EmployeesHeader
+export default EventsHeader

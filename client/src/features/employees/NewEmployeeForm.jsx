@@ -137,62 +137,60 @@ const NewEmployeeForm = () => {
     const content = (
         <>
             <p className={errClass}>{error?.data?.message}</p>
-            <form className="form" onSubmit={onSaveEmployeeClicked}>
-                <div className="form__title-row">
+            <form className="px-20 place-content-center w-96" onSubmit={onSaveEmployeeClicked}>
+                <div className="text-lg font-bold py-5">
                     <h2>Add New Employee</h2>
                 </div>
-                <div className='w-80'>
-                    <label className="form__label" htmlFor="name">
+                <div className='w-80 '>
+                    <label className="block" htmlFor="name">
                         Name*<span className="nowrap">[3-20 letters]</span></label>
                     <input
-
                         id="name"
                         name="name"
                         type="text"
                         autoComplete="off"
                         placeholder="Name"
-                        className='border rounded-lg text-base w-80 block'
+                        className='border rounded-lg text-base w-80 block p-2'
                         value={employeeName}
                         onChange={onNameChanged}
                     />
                     <div className='w-80'>
                     </div>
-                    <label className="form__label" htmlFor="employeeSurname">
+                    <label className="block" htmlFor="employeeSurname">
                         Surname*<span className="nowrap">[3-20 letters]</span></label>
                     <input
-
                         id="employeeSurname"
                         name="employeeSurname"
                         type="text"
                         autoComplete="off"
                         value={employeeSurname}
                         placeholder="Surname"
-                        className='border rounded-lg text-base w-80 block'
+                        className='border rounded-lg text-base w-80 block p-2'
                         onChange={onSurnameChanged}
                     />
                 </div>
                 <div className='w-80'>
-                    <label className="form__label" htmlFor="password">
+                    <label className="w-80" htmlFor="password">
                         Password* <span className="nowrap">[4-12 chars incl. !@#$%]</span></label>
                     <input
                         id="password"
                         name="password"
                         type="password"
                         placeholder="Password"
-                        className='border rounded-lg text-base w-80 block'
+                        className='border rounded-lg text-base w-80 block p-2'
                         value={employeePassword}
                         onChange={onPasswordChanged}
                     />
                 </div>
                 <div className='w-80'>
-                    <label className="form__label" htmlFor="email">
+                    <label className="block" htmlFor="email">
                         Email* <span className="nowrap">[incl @]</span></label>
                     <input
                         id="email"
                         name="email"
                         type="text"
                         placeholder="email"
-                        className='border rounded-lg text-base w-80 block'
+                        className='border rounded-lg text-base w-80 block p-2'
                         autoComplete="off"
                         value={employeeEmail}
                         onChange={onEmailChanged}
@@ -213,7 +211,7 @@ const NewEmployeeForm = () => {
                     </select>
                 </div>
                 <div className='w-80'>
-                    <label className="form__label" htmlFor="roles">
+                    <label className="block" htmlFor="roles">
                         ASSIGNED ROLES*</label>
                     <select
                         id="roles"
@@ -228,7 +226,7 @@ const NewEmployeeForm = () => {
                     </select>
                 </div>
                 <div className='w-80'>
-                    <label className="form__label" htmlFor="employeeFund">
+                    <label className="block" htmlFor="employeeFund">
                         Fund*</label>
                     <input
                         id="employeeFund"
@@ -238,7 +236,7 @@ const NewEmployeeForm = () => {
                         value={employeeFund}
                         onChange={onFundChanged}
                         placeholder="$"
-                        className='border rounded-lg text-base w-80 block'
+                        className='border rounded-lg text-base w-80 block p-2'
                     />
                 </div>
                 <div className='w-80'>
@@ -251,7 +249,7 @@ const NewEmployeeForm = () => {
                         autoComplete="off"
                         value={employeeSpent}
                         placeholder="$"
-                        className='border rounded-lg text-base w-80 block'
+                        className='border rounded-lg text-base w-80 block p-2'
                         onChange={onSpentChanged}
                     />
                 </div>
@@ -265,7 +263,7 @@ const NewEmployeeForm = () => {
                         autoComplete="off"
                         value={employeeBudget}
                         placeholder="$"
-                        className='border rounded-lg text-base w-80 block'
+                        className='border rounded-lg text-base w-80 block p-2'
                         onChange={onBudgetChanged}
                     />
                 </div>

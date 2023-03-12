@@ -3,7 +3,7 @@ import Event from './Event'
 import { useGetEventsQuery } from './eventsApiSlice'
 import useAuth from "../../hooks/useAuth"
 
-const EventsList = () => {
+const MyEventsList = () => {
 
   const {employeeEmail, isManager, isAdmin } = useAuth()
 
@@ -34,19 +34,15 @@ const EventsList = () => {
 
       //this only shows my educations, but for admin it shows all educations
       //THIS IS HOW TO FILTER EVENTS BY DEPARTMENT AND TYPE
-    let filteredIds
-    if (isManager || isAdmin) {
-        filteredIds = [...ids]
-    } else {
-        filteredIds = ids.filter(eventId => entities[eventId].employeeEmail === employeeEmail)
-    }
+    let filteredIds = ids.filter(eventId => entities[eventId].employeeEmail === employeeEmail)
+    
 
     const tableContent = ids?.length && filteredIds.map(eventId => <Event key={eventId} eventId={eventId} />)
 
     let editLabel = null
     if (isManager || isAdmin) {
         editLabel = (
-          <div className="">Edit</div>
+          <div className="basis-1/12 p-2 m-2">Edit</div>
 
         )         
     }
@@ -61,9 +57,7 @@ const EventsList = () => {
                       <div  className="basis-2/12 p-2 m-2">Price</div>
                       <div className="basis-2/12 p-2 m-2">Start Date</div>
                       <div  className="basis-2/12 p-2 m-2">Likes</div>
-                      <div className='basis-1/12 p-2 m-2'>
                       {editLabel}
-                      </div>
                  
               </div>
               <div className="flex flex-col">
@@ -77,4 +71,4 @@ const EventsList = () => {
   return content
 }
 
-export default EventsList
+export default MyEventsList

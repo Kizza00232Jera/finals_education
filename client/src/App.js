@@ -5,7 +5,6 @@ import Login from './features/auth/Login';
 import DashLayout from './components/DashLayout';
 import Welcome from './features/auth/Welcome';
 import EditEmployee from './features/employees/EditEmployee';
-import NewEmployeeForm from './features/employees/NewEmployeeForm';
 import EditEvent from './features/events/EditEvent';
 import NewEventPage from './pages/NewEventPage';
 import EventPage from './pages/EventPage';
@@ -17,6 +16,7 @@ import EventsPage from './pages/EventsPage';
 import EmployeePage from './pages/EmployeePage';
 import EmployeesPage from './pages/EmployeesPage';
 import NewEducationPage from './pages/NewEducationPage'
+import MyEventsPage from './pages/MyEventsPage'
 
 function App() {
   return (
@@ -49,6 +49,7 @@ function App() {
                   <Route index element={<EventsPage />} />
                   <Route path=":id" element={<EditEvent />} />
                   <Route path="new" element={<NewEventPage />} />
+                  <Route path="myevents" element={<MyEventsPage />} />
                   <Route path="event/:id" element={<EventPage />} />
                 </Route>
 

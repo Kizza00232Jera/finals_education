@@ -44,7 +44,7 @@ const Event = ({ eventId }) => {
                 <div className="p-2 m-2 basis-2/12 text-lg">{event.eventPrice} €</div>
                 <div className="p-2 m-2 basis-2/12 text-lg">{event.eventStartDate}</div>
                 <div className="p-2 m-2 basis-2/12 text-lg">123</div>
-                <div className="p-2 m-2 text-lg">       
+                <div className="p-2 m-2 basis-1/12 text-lg">       
                 {editBtn}
                     </div>
                 

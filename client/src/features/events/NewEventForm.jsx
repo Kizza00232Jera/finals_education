@@ -68,7 +68,7 @@ const NewEventForm = () => {
     const onDescriptionChanged = e => setDescription(e.target.value)
     const onEmployeeEmailChanged = e => setEmployeeEmail(e.target.value)
 
-     const onDepartmentChanged = e => {
+    const onDepartmentChanged = e => {
         const values = Array.from(
             e.target.selectedOptions,
             (option) => option.value
@@ -84,7 +84,7 @@ const NewEventForm = () => {
         setRequested(values)
     }
 
-     const onApprovedChanged = e => {
+    const onApprovedChanged = e => {
         const values = Array.from(
             e.target.selectedOptions,
             (option) => option.value
@@ -146,103 +146,118 @@ const NewEventForm = () => {
 
             <p className={errClass}>{error?.data?.message}</p>
 
-            <form className="form" onSubmit={onSaveEventClicked}>
-                <div className="text-lg">
-                    <h2>Create Event</h2>
+            <form className="px-20 place-content-center w-96" onSubmit={onSaveEventClicked}>
+                <div className="text-lg font-bold py-5">
+                    <h2>GENERAL</h2>
 
                 </div>
-                <div className='w-80'>
+                <div className='flex w-80 gap-4'>
 
-                    <label className="block">
-                        Title*</label>
-                    <input
-                        id="event-title"
-                        name="title"
-                        type="text"
-                        autoComplete="off"
-                        value={eventTitle}
-                        placeholder="Name of the event"
-                        className='border rounded-lg text-base w-80 block p-2'
-                        onChange={onTitleChanged}
-                    />
-                </div>
-                <div className='w-80'>
-                    <label className="block" htmlFor="event-enddate">
-                        Deadline*</label>
-                    <input
-                        id="event-enddate"
-                        name="startdate"
-                        type="text"
-                        autoComplete="off"
-                        value={eventDeadline}
-                        placeholder="Deadline to apply"
-                        className='border rounded-lg text-base w-80 block p-2'
-                        onChange={onDeadlineChanged}
-                    />
-                    
-                </div>
-                <div className="w-80">
 
-                    <label className="form__label" htmlFor="event-city">
-                        City*</label>
-                    <input
-                        id="event-city"
-                        name="city"
-                        type="text"
-                        autoComplete="off"
-                        value={eventCity}
-                        placeholder="Event city"
-                        className='border rounded-lg text-base w-80 block p-2'
-                        onChange={onCityChanged}
-                    />
-                </div>
-                <div className='w-80'>
-                    <label className="form__label" htmlFor="event-venue">
-                        Venue*</label>
-                    <input
-                        id="event-venue"
-                        name="venue"
-                        type="text"
-                        autoComplete="off"
-                        value={eventVenue}
-                        placeholder="Event Venue"
-                        className='border rounded-lg text-base w-80 block p-2'
-                        onChange={onVenueChanged}
-                    />
-                </div>
-                <div className='w-80'>
-                    <label className="form__label" htmlFor="event-startdate">
-                        Start Date*</label>
-                    <input
-                        id="event-startdate"
-                        name="startdate"
-                        type="text"
-                        autoComplete="off"
-                        value={eventStartDate}
-                        placeholder="123"
-                        className='border rounded-lg text-base w-80 block p-2'
-                        onChange={onStartDateChanged}
-                    />
-                </div>
-                <div className='w-80'>
+                    <div className='w-80'>
+                        <label className="block" htmlFor="event-enddate">
+                            Title*</label>
+                        <input
+                            id="event-enddate"
+                            name="startdate"
+                            type="text"
+                            autoComplete="off"
+                            value={eventTitle}
+                            placeholder="Deadline to apply"
+                            className='border rounded-lg text-base w-80 block p-2'
+                            onChange={onTitleChanged}
+                        />
 
-                    <label className="form__label" htmlFor="event-deadline">
-                        End date*</label>
-                    <input
-                        id="event-deadline"
-                        name="deadline"
-                        type="text"
-                        autoComplete="off"
-                        value={eventEndDate}
-                        placeholder="123"
-                        className='border rounded-lg text-base w-80 block p-2'
-                        onChange={onEndDateChanged}
-                    />
+                    </div>
+                    <div className='w-80 '>
+                        <label className="block" htmlFor="event-enddate">
+                            Deadline*</label>
+                        <input
+                            id="event-enddate"
+                            name="startdate"
+                            type="text"
+                            autoComplete="off"
+                            value={eventDeadline}
+                            placeholder="Deadline to apply"
+                            className='border rounded-lg text-base w-80 block p-2'
+                            onChange={onDeadlineChanged}
+                        />
+
+                    </div>
+                </div>
+                <div className='flex gap-4 w-80'>
+
+                    <div className="w-80">
+
+                        <label className="form__label" htmlFor="event-city">
+                            City*</label>
+                        <input
+                            id="event-city"
+                            name="city"
+                            type="text"
+                            autoComplete="off"
+                            value={eventCity}
+                            placeholder="Event city"
+                            className='border rounded-lg text-base w-80 block p-2'
+                            onChange={onCityChanged}
+                        />
+                    </div>
+                    <div className='w-80'>
+                        <label className="form__label" htmlFor="event-venue">
+                            Venue*</label>
+                        <input
+                            id="event-venue"
+                            name="venue"
+                            type="text"
+                            autoComplete="off"
+                            value={eventVenue}
+                            placeholder="Event Venue"
+                            className='border rounded-lg text-base w-80 block p-2'
+                            onChange={onVenueChanged}
+                        />
+                    </div>
+                </div>
+                <div className="text-lg font-bold py-5">
+                    <h2>Date and Duration</h2>
+
+                </div>
+                <div className='flex gap-4 w-80'>
+                    <div className='w-80'>
+                        <label className="form__label" htmlFor="event-startdate">
+                            Start Date*</label>
+                        <input
+                            id="event-startdate"
+                            name="startdate"
+                            type="text"
+                            autoComplete="off"
+                            value={eventStartDate}
+                            placeholder="123"
+                            className='border rounded-lg text-base w-80 block p-2'
+                            onChange={onStartDateChanged}
+                        />
+                    </div>
+
+                    <div className='w-80'>
+
+                        <label className="form__label" htmlFor="event-deadline">
+                            End date*</label>
+                        <input
+                            id="event-deadline"
+                            name="deadline"
+                            type="text"
+                            autoComplete="off"
+                            value={eventEndDate}
+                            placeholder="123"
+                            className='border rounded-lg text-base w-80 block p-2'
+                            onChange={onEndDateChanged}
+                        />
+                    </div>
+
                 </div>
                 <div className='w-80'>
 
                     <label className="form__label" htmlFor="event-duration">
-                        Duration*</label>
+                        Lenght (in days)*</label>
                     <input
                         id="event-duration"
                         name="duration"
@@ -254,6 +269,12 @@ const NewEventForm = () => {
                         onChange={onDurationChanged}
                     />
                 </div>
+                <div className="text-lg font-bold py-5">
+                    <h2>Purchase details</h2>
+
+                </div>
+                <div className='flex gap-5 w-80'>
+
                 <div className='w-80'>
 
                     <label className="form__label" htmlFor="event-price">
@@ -267,7 +288,7 @@ const NewEventForm = () => {
                         placeholder="123"
                         className='border rounded-lg text-base w-80 block p-2'
                         onChange={onPriceChanged}
-                    />
+                        />
                 </div>
                 <div className='w-80'>
 
@@ -282,11 +303,12 @@ const NewEventForm = () => {
                         placeholder="Link of the event"
                         className='border rounded-lg text-base w-80 block p-2'
                         onChange={onWebLinkChanged}
-                    />
+                        />
                 </div>
-                <div className='w-80'>
+                        </div>
+                <div className=''>
 
-                    <label className="form__label" htmlFor="event-description">
+                    <label className="w-80" htmlFor="event-description">
                         Event and price breakdown*</label>
                     <input
                         id="event-description"
@@ -303,6 +325,7 @@ const NewEventForm = () => {
                     <label className="form__label" htmlFor="departments">
                         ASSIGNED DEPARTMENTS*</label>
                     <select
+                        className='w-80 h-36'
                         id="departments"
                         name="departments"
                         multiple={true}

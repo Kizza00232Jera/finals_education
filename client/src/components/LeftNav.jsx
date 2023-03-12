@@ -61,7 +61,7 @@ const LeftNav = () => {
     let myEduBtn = null
         myEduBtn = (
             <Link
-             to="http://localhost:3000/dash/events"
+             to="http://localhost:3000/dash/events/myevents"
              className='flex p-3 hover:bg-blue-hover hover:text-primary'
              title="myeducations"  
             >
@@ -75,7 +75,6 @@ const LeftNav = () => {
     
 
     let employeeBtn = null
-    if (isManager || isAdmin) {
             employeeBtn = (
             <Link 
             to="http://localhost:3000/dash/employees"
@@ -89,7 +88,7 @@ const LeftNav = () => {
             
             </Link>
         )         
-    }
+
 
     let addEmployeeBtn = null
     if (isManager || isAdmin) {

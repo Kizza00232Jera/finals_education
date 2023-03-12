@@ -77,7 +77,6 @@ body {
   background-color: var(--BGCOLOR);
   color: var(--COLOR);
   background-size: cover;
-  background-position: top right;
   background-blend-mode: multiply;
 }
 
