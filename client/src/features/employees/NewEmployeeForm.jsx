@@ -69,7 +69,7 @@ const NewEmployeeForm = () => {
         }
     }, [isSuccess, navigate])
 
-    //handlers.. sets username and pw...
+   
     const onNameChanged = e => setName(e.target.value)
     const onSurnameChanged = e => setSurname(e.target.value)
     const onEmailChanged = e => setEmail(e.target.value)

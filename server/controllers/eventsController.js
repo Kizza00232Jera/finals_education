@@ -30,10 +30,10 @@ const getAllEvents = asyncHandler(async (req, res) => {
 // @route POST /events
 // @access Private
 const createNewEvent = asyncHandler(async (req, res) => {
-    const { employeeEmail, eventTitle, eventCity, eventVenue, eventStartDate, eventEndDate, eventDeadline, eventDuration, eventPrice, eventWebLink, eventDescription } = req.body
+    const { employeeEmail, eventTitle, eventCity, eventVenue, eventStartDate, eventEndDate, eventDeadline, eventDuration, eventPrice, eventWebLink, eventDescription, eventDepartment } = req.body
 
     // Confirm data
-    if (!employeeEmail || !eventTitle || !eventCity || !eventVenue || !eventStartDate || !eventEndDate || !eventDeadline || !eventDuration || !eventPrice || !eventDescription) {
+    if (!employeeEmail || !eventTitle || !eventCity || !eventVenue || !eventStartDate || !eventEndDate || !eventDeadline || !eventDuration || !eventPrice || !eventDescription || !eventDepartment) {
         return res.status(400).json({ message: 'All fields are required' })
     }
 
@@ -45,7 +45,7 @@ const createNewEvent = asyncHandler(async (req, res) => {
     }
 
     // Create and store the new employee 
-    const event = await Event.create({ employeeEmail, eventTitle, eventCity, eventVenue, eventStartDate, eventEndDate, eventDeadline, eventDuration, eventPrice, eventWebLink, eventDescription })
+    const event = await Event.create({ employeeEmail, eventTitle, eventCity, eventVenue, eventStartDate, eventEndDate, eventDeadline, eventDuration, eventPrice, eventWebLink, eventDescription, eventDepartment })
 
     if (event) { // Created 
         return res.status(201).json({ message: 'New event created' })
@@ -60,10 +60,10 @@ const createNewEvent = asyncHandler(async (req, res) => {
 // @route PATCH /events
 // @access Private
 const updateEvent = asyncHandler(async (req, res) => {
-    const { id, employeeEmail, eventTitle, eventCity, eventVenue, eventStartDate, eventEndDate, eventDeadline, eventDuration, eventWebLink, eventPrice, eventDescription } = req.body
+    const { id, employeeEmail, eventTitle, eventCity, eventVenue, eventStartDate, eventEndDate, eventDeadline, eventDuration, eventWebLink, eventPrice, eventDescription, eventDepartment, eventRequested, eventApproved, eventRejected } = req.body
 
     // Confirm data
-    if (!id || !employeeEmail || !eventTitle || !eventCity || !eventVenue || !eventStartDate || !eventEndDate || !eventDeadline || !eventDuration || !eventPrice || !eventDescription) {
+    if (!id || !employeeEmail || !eventTitle || !eventCity || !eventVenue || !eventStartDate || !eventEndDate || !eventDeadline || !eventDuration || !eventPrice || !eventDescription || !eventDepartment) {
         return res.status(400).json({ message: 'All fields are required' })
     }
 
@@ -93,6 +93,11 @@ const updateEvent = asyncHandler(async (req, res) => {
     event.eventPrice = eventPrice
     event.eventWebLink = eventWebLink
     event.eventDescription = eventDescription
+    event.eventDepartment = eventDepartment
+    event.eventApproved = eventApproved
+    event.eventRejected = eventRejected
+    event.eventRequested = eventRequested
+    
 
     const updatedEvent = await event.save()
 

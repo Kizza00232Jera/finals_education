@@ -4,5 +4,6 @@ export const DEPARTMENTS = {
     PC: 'PC',
     Frontend: 'Frontend',
     Backend: 'Backend',
-    Developer: 'Developer'
+    Developer: 'Developer',
+    All: 'All'
 }

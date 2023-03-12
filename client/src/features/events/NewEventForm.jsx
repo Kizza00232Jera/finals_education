@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import { DEPARTMENTS } from '../../config/departments'
 import { useAddNewEventMutation } from "./eventsApiSlice"
 
 
@@ -27,6 +28,11 @@ const NewEventForm = () => {
     const [eventWebLink, setWebLink] = useState('')
     const [eventDescription, setDescription] = useState('')
     const [employeeEmail, setEmployeeEmail] = useState('')
+    const [eventDepartment, setDepartment] = useState('')
+    const [eventRequested, setRequested] = useState('')
+    const [eventApproved, setApproved] = useState('')
+    const [eventRejected, setRejected] = useState('')
+
 
     useEffect(() => {
         console.log(isSuccess)
@@ -42,6 +48,10 @@ const NewEventForm = () => {
             setWebLink('')
             setDescription('')
             setEmployeeEmail('')
+            setDepartment('')
+            setRequested('')
+            setApproved('')
+            setRejected('')
             navigate('/dash/events')
         }
     }, [isSuccess, navigate])
@@ -58,16 +68,58 @@ const NewEventForm = () => {
     const onDescriptionChanged = e => setDescription(e.target.value)
     const onEmployeeEmailChanged = e => setEmployeeEmail(e.target.value)
 
-    const canSave = [employeeEmail, eventTitle, eventCity, eventVenue, eventStartDate, eventEndDate, eventDeadline, eventDuration, eventPrice, eventWebLink, eventDescription].every(Boolean) && !isLoading
+     const onDepartmentChanged = e => {
+        const values = Array.from(
+            e.target.selectedOptions,
+            (option) => option.value
+        )
+        setDepartment(values)
+    }
+
+    const onRequestedChanged = e => {
+        const values = Array.from(
+            e.target.selectedOptions,
+            (option) => option.value
+        )
+        setRequested(values)
+    }
+
+     const onApprovedChanged = e => {
+        const values = Array.from(
+            e.target.selectedOptions,
+            (option) => option.value
+        )
+        setApproved(values)
+    }
+
+    const onRejectedChanged = e => {
+        const values = Array.from(
+            e.target.selectedOptions,
+            (option) => option.value
+        )
+        setRejected(values)
+    }
+
+
+    const canSave = [employeeEmail, eventTitle, eventCity, eventVenue, eventStartDate, eventEndDate, eventDeadline, eventDuration, eventPrice, eventWebLink, eventDescription, eventDepartment.length].every(Boolean) && !isLoading
 
     //calling add new event mutation
     const onSaveEventClicked = async (e) => {
         e.preventDefault()
         if (canSave) {
-            await addNewEvent({ employeeEmail, eventTitle, eventCity, eventVenue, eventStartDate, eventEndDate, eventDeadline, eventDuration, eventPrice, eventWebLink, eventDescription })
+            await addNewEvent({ employeeEmail, eventTitle, eventCity, eventVenue, eventStartDate, eventEndDate, eventDeadline, eventDuration, eventPrice, eventWebLink, eventDescription, eventDepartment, eventRequested, eventApproved, eventRejected })
         }
     }
 
+    const options2 = Object.values(DEPARTMENTS).map(department => {
+        return (
+            <option
+                key={department}
+                value={department}
+
+            > {department}</option>
+        )
+    })
 
     //   const options = employees.map(employee => {
     //     return (
@@ -246,6 +298,62 @@ const NewEventForm = () => {
                         className='border rounded-lg text-base w-80 block'
                         onChange={onDescriptionChanged}
                     />
+                </div>
+                <div className='w-80'>
+                    <label className="form__label" htmlFor="departments">
+                        DEPARTMENTS*</label>
+                    <select
+                        id="departments"
+                        name="departments"
+                        multiple={true}
+                        size="3"
+                        value={eventDepartment}
+                        onChange={onDepartmentChanged}
+                    >
+                        {options2}
+                    </select>
+                </div>
+                <div className='w-80'>
+                    <label className="form__label" htmlFor="departments">
+                        Requested *</label>
+                    <select
+                        id="departments"
+                        name="departments"
+                        multiple={true}
+                        size="3"
+                        value={eventRequested}
+                        onChange={onRequestedChanged}
+                    >
+                        -all requests here-
+                    </select>
+                </div>
+                <div className='w-80'>
+                    <label className="form__label" htmlFor="departments">
+                        Approved *</label>
+                    <select
+                        id="departments"
+                        name="departments"
+                        multiple={true}
+                        size="3"
+                        value={eventApproved}
+                        onChange={onApprovedChanged}
+                    >
+                        -all requests here-
+                    </select>
+                </div>
+                <div className='w-80'>
+                    <label className="form__label" htmlFor="departments">
+                        Rejected *</label>
+                    <select
+                        id="departments"
+                        name="departments"
+                        multiple={true}
+                        size="3"
+                        value={eventRejected}
+                        onChange={onRejectedChanged}
+                    >
+                        -all requests here-
+                    </select>
                 </div>
                 <div className='w-80'>
 
