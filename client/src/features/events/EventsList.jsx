@@ -54,15 +54,15 @@ const EventsList = () => {
       content = (
         <div>
              
-          <div className="w-full text-left ">
-              <div className="border rounded-lg">
-                  <div className='flex flex-row'>
+          <div className="w-full text-left px-20 flex-grow">
+              <div className="border  rounded-lg flex flex-row border-soft-gray mb-4 bg-white">
+                  
                       <div className="basis-5/12 p-2 m-2">Title</div>
                       <div  className="basis-2/12 p-2 m-2">Price</div>
                       <div className="basis-2/12 p-2 m-2">Start Date</div>
                       <div  className="basis-2/12 p-2 m-2">Likes</div>
                       {editLabel}
-                  </div>
+                 
               </div>
               <div className="flex flex-col">
               {tableContent} 

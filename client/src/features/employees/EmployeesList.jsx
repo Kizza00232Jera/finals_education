@@ -35,8 +35,8 @@ const EmployeesList = () => {
     //   console.log(employees)
     //   console.log(tableContent)
     content = (
-      <div className="w-full text-left ">
-          <div className='border  rounded-lg flex flex-row '>
+      <div className="w-full text-left px-20 flex-grow">
+          <div className='border  rounded-lg flex flex-row border-soft-gray mb-4 bg-white'>
             <div className="p-2 m-2 basis-4/12">Employee Name</div>
             <div className="p-2 m-2 basis-2/12">Department</div>
             <div className="p-2 m-2 basis-3/12">Roles</div>

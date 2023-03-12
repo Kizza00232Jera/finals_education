@@ -1,5 +1,4 @@
 import React from 'react'
-import Footer from '../components/Footer'
 import EmployeeOverview from '../features/employees/EmployeeOverview'
 import EmployeesHeader from '../features/employees/EmployeesHeader'
 
@@ -9,7 +8,6 @@ const EmployeePage = () => {
     <div>
       <EmployeesHeader />
       <EmployeeOverview/>
-      <Footer />
     </div>
   )
 }

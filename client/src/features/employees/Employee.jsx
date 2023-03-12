@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
+import { faMicrophone, faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from 'react-router-dom'
 
 import { useSelector } from 'react-redux'
@@ -25,15 +25,14 @@ const Employee = ({ employeeId }) => {
         return (
             
             
-              <div className="border-2 border-soft-gray flex flex-row">
-              <div onClick={handleEmployeePage} className="p-2 m-2 basis-4/12">{employee.employeeName} {employee.employeeSurname}</div>
-              <div className="p-2 m-2 basis-2/12">{employeeDepartmentsString} </div>
-              <div className="p-2 m-2 basis-3/12">{employeeRolesString}</div>
-              <div className="p-2 m-2 basis-2/12">{employee.employeeBudget} €</div>
+              <div className="border border-soft-gray flex flex-row rounded-lg mb-2 bg-white">
+              <div onClick={handleEmployeePage} className="p-3 m-3 basis-4/12 text-lg"> <FontAwesomeIcon icon={faMicrophone}/> {employee.employeeName} {employee.employeeSurname}</div>
+              <div className="p-3 m-3 basis-2/12 text-lg">{employeeDepartmentsString} </div>
+              <div className="p-3 m-3 basis-3/12 text-lg">{employeeRolesString}</div>
+              <div className="p-3 m-3 basis-2/12 text-lg">{employee.employeeBudget} EUR</div>
 
-              <div className="p-2 m-2 basis-1/12">
+              <div className="p-3 m-3 basis-1/12">
                   <button
-                      className="icon-button table__button"
                       onClick={handleEdit}
                       >
                       <FontAwesomeIcon icon={faPenToSquare} />

@@ -6,13 +6,13 @@ import LeftNav from './LeftNav'
 const DashLayout = () => {
   return (
     <>
-      <div className='flex'>
-        <LeftNav />
-        <div className='w-main ml-20 mr-20'>
-          <div>
+      <div className='flex flex-row min-w-max'>
+        <LeftNav className="basis-1/12"/>
+        <div className='basis-11/12 bg-gray flex flex-col'>
+          <div className='flex-grow'>
             <Outlet />
           </div>
-          <Footer />
+          <Footer className="px-20 flex-none"/>
         </div>
       </div>
 

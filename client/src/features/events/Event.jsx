@@ -24,7 +24,6 @@ const Event = ({ eventId }) => {
         if (isManager || isAdmin) {
                 editBtn = (
                 <button
-                className="icon-button table__button"
                 onClick={handleEdit}
                 >
                 <FontAwesomeIcon icon={faPenToSquare} />
@@ -40,12 +39,12 @@ const Event = ({ eventId }) => {
         return (
 
          
-            <div className="border-2 border-soft-gray flex flex-row">
-                <div onClick={handleEventPage} className="basis-5/12 p-2 m-2">{event.eventTitle}</div>
-                <div className="p-2 m-2 basis-2/12 ">{event.eventPrice} €</div>
-                <div className="p-2 m-2 basis-2/12 ">{event.eventStartDate}</div>
-                <div className="p-2 m-2 basis-2/12 ">123</div>
-                <div className="p-2 m-2 basis-1/12 ">       
+            <div className="border border-soft-gray flex flex-row rounded-lg mb-2 bg-white">
+                <div onClick={handleEventPage} className="basis-5/12 p-2 m-2 text-lg">{event.eventTitle}</div>
+                <div className="p-2 m-2 basis-2/12 text-lg">{event.eventPrice} €</div>
+                <div className="p-2 m-2 basis-2/12 text-lg">{event.eventStartDate}</div>
+                <div className="p-2 m-2 basis-2/12 text-lg">123</div>
+                <div className="p-2 m-2 text-lg">       
                 {editBtn}
                     </div>
                 

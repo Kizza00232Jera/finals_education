@@ -15,7 +15,10 @@ module.exports = {
       'power-gray':'#858585',
       'smoke-gray': '#A4A4A4',
       'soft-gray': '#DEDEDE',
-      'invisible-gray': '#F5F5F5'
+      'invisible-gray': '#F5F5F5',
+      'white': '#FFFFFF',
+      'gray': '#F9F9F9',
+      'blue-hover':'#F4F6FE'
     },
     extend: {
       spacing: {
