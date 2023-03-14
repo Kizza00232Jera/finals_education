@@ -3,7 +3,7 @@ import { setCredentials } from '../../features/auth/authSlice'
 
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: 'finals-education-2h9h.vercel.app',
+    baseUrl: 'http://localhost:3500',
     //always including cookies
     credentials: 'include',
     
