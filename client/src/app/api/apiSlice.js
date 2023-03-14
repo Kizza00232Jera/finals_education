@@ -3,7 +3,7 @@ import { setCredentials } from '../../features/auth/authSlice'
 
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: 'https://finalsedu-api.onrender.com',
+    baseUrl: 'finals-education-2h9h.vercel.app',
     //always including cookies
     credentials: 'include',
     
