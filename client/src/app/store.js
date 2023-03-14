@@ -10,7 +10,7 @@ export const store = configureStore({
     },
     middleware: getDefaultMiddleware => 
         getDefaultMiddleware().concat(apiSlice.middleware),
-    devTools: true
+    devTools: false
 })
 
 //enabling things that we can use in queries in users and notes list
