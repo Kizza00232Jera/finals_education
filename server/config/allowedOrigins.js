@@ -4,6 +4,7 @@ const allowedOrigins = [
     'https://finals-education-front.vercel.app',
     'https://finals-education-2h9h.vercel.app',
     'https://finalsedu.onrender.com',
+    'https://finalsedu.onrender.com',
     'https://finals-education.vercel.app',
     '93.143.191.242',
     '0.0.0.0/0',
