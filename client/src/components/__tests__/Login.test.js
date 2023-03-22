@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from '../../App';
 import { store } from '../../app/store';
 import '@testing-library/jest-dom'
-import LeftNav from '../LeftNav'
 
 
 
