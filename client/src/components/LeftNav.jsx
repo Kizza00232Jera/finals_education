@@ -62,7 +62,6 @@ const LeftNav = () => {
         myEduBtn = (
             <Link
              to="http://localhost:3000/dash/events/myevents"
-             data-testid="1234"
              className='flex p-3 hover:bg-blue-hover hover:text-primary'
              title="myeducations"  
             >
