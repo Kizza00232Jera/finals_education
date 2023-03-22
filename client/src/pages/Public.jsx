@@ -66,7 +66,7 @@ const Login = () => {
   if (isLoading) return <p>Loading...</p>
 
    const content = (  
-  <section className='centered grid grid-rows-3'>
+  <section data-testid="123" className='centered grid grid-rows-3'>
     <div>
           <img src={edulogo} className="object-fill h-48 w-96" alt="logo" />
     </div>

@@ -66,7 +66,7 @@ const Login = () => {
   if (isLoading) return <p>Loading...</p>
 
    const content = (  
-  <section className='centered grid grid-rows-3'>
+  <section data-testid="123" className='centered grid grid-rows-3'>
     <div>
           <img src={edulogo} className="object-fill h-48 w-96" alt="logo" />
     </div>
@@ -115,7 +115,7 @@ const Login = () => {
                     Remember me
                 </label>
                 <div className='grow'></div>
-                <Link to='/'><p className='text-primary font-extrabold'>Forgot Password?</p></Link>
+                <Link to='/'><p className='text-primary font-extrabold '>Forgot Password?</p></Link>
                         </div>
                 <button className='w-500 text-center p-2 bg-primary text-sm font-bold rounded text-color-white mb-4'>Log in</button>
                 <button disabled className='w-500 text-center p-2 bg-power-gray text-sm font-bold rounded text-color-white cursor-not-allowed'>Sign in with google</button>
