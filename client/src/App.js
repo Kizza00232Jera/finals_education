@@ -16,7 +16,7 @@ import EventsPage from './pages/EventsPage';
 import EmployeePage from './pages/EmployeePage';
 import EmployeesPage from './pages/EmployeesPage';
 import NewEducationPage from './pages/NewEducationPage'
-import MyEventsPage from './pages/MyEventsPage'
+import MyProfilePage from './pages/MyProfilePage'
 
 function App() {
   return (
@@ -49,7 +49,7 @@ function App() {
                   <Route index element={<EventsPage />} />
                   <Route path=":id" element={<EditEvent />} />
                   <Route path="new" element={<NewEventPage />} />
-                  <Route path="myevents" element={<MyEventsPage />} />
+                  <Route path="myevents" element={<MyProfilePage />} />
                   <Route path="event/:id" element={<EventPage />} />
                 </Route>
 

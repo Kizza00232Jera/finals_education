@@ -1,12 +1,13 @@
 import React from 'react'
 import EmployeeOverview from '../features/employees/EmployeeOverview'
-import EmployeesHeader from '../features/employees/EmployeesHeader'
+import EmployeeHeader from '../features/employees/EmployeeHeader'
+
 
 
 const EmployeePage = () => {
   return (
     <div>
-      <EmployeesHeader />
+      <EmployeeHeader />
       <EmployeeOverview/>
     </div>
   )

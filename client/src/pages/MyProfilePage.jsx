@@ -2,7 +2,7 @@ import React from 'react'
 import MyEventsHeader from '../features/events/MyEventsHeader'
 import MyEventsList from '../features/events/MyEventsList'
 
-const MyEventsPage = () => {
+const MyProfilePage = () => {
   return (
     <div>
       <MyEventsHeader />
@@ -11,7 +11,7 @@ const MyEventsPage = () => {
   )
 }
 
-export default MyEventsPage
+export default MyProfilePage
 
 
 

@@ -86,7 +86,7 @@ const LeftNav = () => {
             <button>
                 <FontAwesomeIcon icon={faTrophy} />
             </button>
-            <p className='font-base pl-2'>My Educations</p>
+            <p className='font-base pl-2'>My Profile</p>
             
             </Link>
         )
