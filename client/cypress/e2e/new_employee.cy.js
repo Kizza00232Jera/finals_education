@@ -1,3 +1,11 @@
+//login with non existing mark acc, fail
+//login with admin acc and create mark acc
+//login with mark acc - check features 
+//logout
+//login with admin and delete mark
+//check if mark is on list
+//try to log in with mark
+
 describe('new employee', () => {
   it('admin can add new employee', () => {
       //login with admin acc
@@ -7,20 +15,54 @@ describe('new employee', () => {
       cy.findByRole('checkbox', {  name: /remember me/i}).check();
       cy.findByRole('button', {  name: /log in/i}).click();
 
-      //will check if he is logged on his acc, and if his role is correct
+      //can he log out?
+      cy.get('[data-testid="employeeBtn"]').should('be.visible')
+      //login btn shouldn't exist
+      cy.findByRole('button', {  name: /log in/i}).should('not.exist');
+
+
+      //will check his information
       //admin status should exist
-      cy.get('[data-test="admintestid"]').should('be.visible')
+      cy.get('[data-testid="admintestid"]').should('be.visible')
       //manager and employee status shouldnt exist
-      cy.get('[data-test="managertestid"]').should('not.be.exist')
-      cy.get('[data-test="employeetestid"]').should('not.be.exist')
+      cy.get('[data-testid="managertestid"]').should('not.exist')
+      cy.get('[data-testid="employeetestid"]').should('not.exist')
 
       //will check if he has budget 'rendered'
       cy.findByText(/budget: /i).should('be.visible')
-      cy.get('[data-test="budgetvisible"]').should('be.visible')
+      cy.get('[data-testid="budgetvisible"]').should('be.visible')
+
+      //will click on employees
+      cy.get('[data-testid="employeeBtn"]').click();
+
+      //will look for add employee btn, and click it
+      //will be redirected to the add employee form
+      cy.get('[data-testid="addemployeebtn"]').click();
+
+      //create btn should not be clickable until form is filled
+      cy.findByRole('button', {  name: /create/i}).should('have.class', 'bg-invisible-gray')
+      cy.findByRole('button', {  name: /create/i}).should('not.have.class', 'bg-primary')
+
+      //will fill up form
+      cy.get('#name').type('Mark')
+      cy.get('#employeeSurname').type('Wellington')
+      cy.get('#password').type('password')
+      cy.get('#email').type('markwellington@gmail.com')
+      cy.get('#departments').select('Frontend');
+      cy.get('#roles').select('Employee');
+      cy.get('#employeeFund').type(500)
+      cy.get('#employeeSpent').type(400)
+      cy.get('#employeeBudget').type(100)
+
+      //create button clickable now
+      cy.findByRole('button', {  name: /create/i}).should('have.class', 'bg-primary')
+      cy.findByRole('button', {  name: /create/i}).should('not.have.class', 'bg-invisible-gray')
+      
+      cy.findByRole('button', {  name: /create/i}).click();
 
 
-      //will see if he has employees button in nav
-      //will click on add employee on top right if visible
+      
+
       //will get to new page and form for adding user
       //is not able to create it until all fields are populated
       //create btn is enabled after fields are populated

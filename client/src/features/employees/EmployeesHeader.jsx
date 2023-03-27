@@ -16,6 +16,7 @@ const EmployeesHeader = () => {
       addEmployeeBtn = (
         <div className='bg-primary w-fit p-2 rounded-lg text-white font-bold h-fit'>
         <Link
+             data-testid="addemployeebtn"
           to="http://localhost:3000/dash/employees/new">
             <FontAwesomeIcon icon={faPlus} /> Add Employee
         </Link>

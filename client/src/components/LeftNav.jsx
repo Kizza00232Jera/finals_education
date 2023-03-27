@@ -44,6 +44,7 @@ const LeftNav = () => {
     const logoutBtn = (
         <Link
         to="/login"
+        data-testid="logoutbtn"
         className='flex p-3 hover:bg-blue-hover hover:text-primary' 
         title="Logout"
         onClick={sendLogout}
@@ -59,6 +60,7 @@ const LeftNav = () => {
     let eduListBtn = null
         eduListBtn = (
             <Link
+            data-testid="edulistbtn"
             to="http://localhost:3000/dash/events"
             className='flex p-3 hover:bg-blue-hover hover:text-primary'
             title="educations"
@@ -76,6 +78,7 @@ const LeftNav = () => {
     let myEduBtn = null
         myEduBtn = (
             <Link
+             data-testid="myEduBtn" 
              to="http://localhost:3000/dash/events/myevents"
              className='flex p-3 hover:bg-blue-hover hover:text-primary'
              title="myeducations"  
@@ -92,6 +95,7 @@ const LeftNav = () => {
     let employeeBtn = null
             employeeBtn = (
             <Link 
+             data-testid="employeeBtn"
             to="http://localhost:3000/dash/employees"
              className='flex p-3 hover:bg-blue-hover hover:text-primary'
              title="employees"  
@@ -109,6 +113,7 @@ const LeftNav = () => {
     if (isManager || isAdmin) {
         addEmployeeBtn = (
             <Link 
+             data-testid="addemployeebtnnav"
             to="http://localhost:3000/dash/employees/new"
              className='flex p-3 hover:bg-blue-hover hover:text-primary'
              title="employees"  
@@ -148,8 +153,8 @@ const LeftNav = () => {
             </div>
             <div className='bg-smoke-gray p-3 py-2 flex-none'>
             <p className='text-sm text-rich-gray'>Current User:{employeeEmail}</p>
-            <p data-test={statusidclass} className='text-sm font-bold text-black'>{status}</p>
-            <p data-test={budgetidclass} className='text-sm font-bold text-black'>Budget: {employeeBudget} €</p>
+            <p data-testid={statusidclass} className='text-sm font-bold text-black'>{status}</p>
+            <p data-testid={budgetidclass} className='text-sm font-bold text-black'>Budget: {employeeBudget} €</p>
             </div>
         </footer>
         </div>
