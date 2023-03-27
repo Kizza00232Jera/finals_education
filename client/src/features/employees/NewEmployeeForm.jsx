@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from "react"
 import { useAddNewEmployeeMutation } from './employeesApiSlice'
-import { useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { ROLES } from "../../config/roles"
 import { DEPARTMENTS } from "../../config/departments"
 
@@ -12,6 +12,9 @@ const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/
 
 
 const NewEmployeeForm = () => {
+
+    const { pathname } = useLocation()
+
 
     //addnewemployeemutation, gives us an add new employee function that we can call when we need it.
     const [addNewEmployee, {
@@ -137,6 +140,18 @@ const NewEmployeeForm = () => {
     const content = (
         <>
             <p className={errClass}>{error?.data?.message}</p>
+            <div className='mb-4'>
+                    <div className='border-b border-b-soft-gray '>
+                        <header className='h-28 flex flex-wrap content-center px-20 bg-white'>
+                            <div className='flex-grow'>
+                                <Link to="/dash/employees">
+                                    <h1 className='text-3xl'>New Employee</h1>
+                                    <p>{pathname}</p>
+                                </Link>
+                            </div>
+                        </header>
+                    </div>
+                </div>
             <form className="px-20 place-content-center w-96" onSubmit={onSaveEmployeeClicked}>
                 <div className="text-lg font-bold py-5">
                     <h2>Add New Employee</h2>
@@ -154,8 +169,8 @@ const NewEmployeeForm = () => {
                         value={employeeName}
                         onChange={onNameChanged}
                     />
-                    <div className='w-80'>
                     </div>
+                    <div className='w-80'>
                     <label className="block" htmlFor="employeeSurname">
                         Surname*<span className="nowrap">[3-20 letters]</span></label>
                     <input

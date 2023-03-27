@@ -1,11 +1,14 @@
 import React from 'react'
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { DEPARTMENTS } from '../../config/departments'
 import { useAddNewEventMutation } from "./eventsApiSlice"
 
 
 const NewEventForm = () => {
+
+    const { pathname } = useLocation()
+
 
     const [addNewEvent, {
         isLoading,
@@ -146,7 +149,20 @@ const NewEventForm = () => {
 
             <p className={errClass}>{error?.data?.message}</p>
 
+            <div className='mb-4'>
+                    <div className='border-b border-b-soft-gray '>
+                        <header className='h-28 flex flex-wrap content-center px-20 bg-white'>
+                            <div className='flex-grow'>
+                                <Link to="/dash/employees">
+                                    <h1 className='text-3xl'>New Event</h1>
+                                    <p>{pathname}</p>
+                                </Link>
+                            </div>
+                        </header>
+                    </div>
+                </div>
             <form className="px-20 place-content-center w-96" onSubmit={onSaveEventClicked}>
+            
                 <div className="text-lg font-bold py-5">
                     <h2>GENERAL</h2>
 
@@ -275,37 +291,37 @@ const NewEventForm = () => {
                 </div>
                 <div className='flex gap-5 w-80'>
 
-                <div className='w-80'>
+                    <div className='w-80'>
 
-                    <label className="form__label" htmlFor="event-price">
-                        Price (in euro)*</label>
-                    <input
-                        id="event-price"
-                        name="price"
-                        type="text"
-                        autoComplete="off"
-                        value={eventPrice}
-                        placeholder="123"
-                        className='border rounded-lg text-base w-80 block p-2'
-                        onChange={onPriceChanged}
+                        <label className="form__label" htmlFor="event-price">
+                            Price (in euro)*</label>
+                        <input
+                            id="event-price"
+                            name="price"
+                            type="text"
+                            autoComplete="off"
+                            value={eventPrice}
+                            placeholder="123"
+                            className='border rounded-lg text-base w-80 block p-2'
+                            onChange={onPriceChanged}
                         />
-                </div>
-                <div className='w-80'>
+                    </div>
+                    <div className='w-80'>
 
-                    <label className="form__label" htmlFor="event-weblink">
-                        Web Link*</label>
-                    <input
-                        id="event-price"
-                        name="weblink"
-                        type="text"
-                        autoComplete="off"
-                        value={eventWebLink}
-                        placeholder="Link of the event"
-                        className='border rounded-lg text-base w-80 block p-2'
-                        onChange={onWebLinkChanged}
+                        <label className="form__label" htmlFor="event-weblink">
+                            Web Link*</label>
+                        <input
+                            id="event-price"
+                            name="weblink"
+                            type="text"
+                            autoComplete="off"
+                            value={eventWebLink}
+                            placeholder="Link of the event"
+                            className='border rounded-lg text-base w-80 block p-2'
+                            onChange={onWebLinkChanged}
                         />
+                    </div>
                 </div>
-                        </div>
                 <div className=''>
 
                     <label className="w-80" htmlFor="event-description">
@@ -321,64 +337,12 @@ const NewEventForm = () => {
                         onChange={onDescriptionChanged}
                     />
                 </div>
-                <div className='w-80'>
-                    <label className="form__label" htmlFor="departments">
-                        ASSIGNED DEPARTMENTS*</label>
-                    <select
-                        className='w-80 h-36'
-                        id="departments"
-                        name="departments"
-                        multiple={true}
-                        size="3"
-                        value={eventDepartment}
-                        onChange={onDepartmentChanged}
-                    >
-                        {options2}
-                    </select>
-                </div>
-                <div className='w-80'>
-                    <label className="form__label" htmlFor="departments">
-                        Requested *</label>
-                    <div
-                        id="departments"
-                        name="departments"
-                        size="3"
-                        value={eventRequested}
-                        onChange={onRequestedChanged}
-                    >
-                        -all requests here-
-                    </div>
-                </div>
-                <div className='w-80'>
-                    <label className="form__label" htmlFor="departments">
-                        Approved *</label>
-                    <div
-                        id="departments"
-                        name="departments"
-                        size="3"
-                        value={eventApproved}
-                        onChange={onApprovedChanged}
-                    >
-                        -all requests here-
-                    </div>
-                </div>
-                <div className='w-80'>
-                    <label className="form__label" htmlFor="departments">
-                        Rejected *</label>
-                    <div
-                        id="departments"
-                        name="departments"
-                        size="3"
-                        value={eventRejected}
-                        onChange={onRejectedChanged}
-                    >
-                        -all requests here-
-                    </div>
-                </div>
+                
+
                 <div className='w-80'>
 
                     <label className="form__label" htmlFor="event-usercreated">
-                        User Created*</label>
+                        User Created(your email)*</label>
                     <input
                         id="event-usercreated"
                         name="usercreated"

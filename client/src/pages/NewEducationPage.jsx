@@ -5,7 +5,6 @@ import NewEmployeeForm from '../features/employees/NewEmployeeForm'
 const NewEducationPage = () => {
   return (
     <div>
-      <EmployeesHeader />
       <NewEmployeeForm />
     </div>
   )

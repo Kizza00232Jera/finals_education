@@ -5,7 +5,6 @@ import NewEventForm from '../features/events/NewEventForm'
 const NewEventPage = () => {
   return (
     <div>
-      <EventsHeader/>
       <NewEventForm/>
     </div>
   )
