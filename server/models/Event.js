@@ -44,25 +44,7 @@ const eventSchema = new mongoose.Schema({
     },
     eventDescription: {
         type: String,
-        required: true,
-        maxLength: 300
-    },
-    eventDepartment: {
-        type: [String],
-        default: ["All"],
         required: true
-    },
-    eventRequested: {
-        type: [String],
-        default: [""]
-    },
-    eventApproved: {
-        type: [String],
-        default: [""]
-    },
-    eventRejected: {
-        type: [String],
-        default: [""]
     }
 
 },

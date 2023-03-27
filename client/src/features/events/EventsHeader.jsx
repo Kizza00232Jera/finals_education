@@ -23,7 +23,7 @@ const EventsHeader = () => {
       <div className='bg-primary w-fit p-2 rounded-lg text-white font-bold h-fit'>
       <Link
         to="http://localhost:3000/dash/events/new">
-          <FontAwesomeIcon icon={faPlus} /> Add Education
+          <FontAwesomeIcon icon={faPlus} /> Add Event
       </Link>
     </div>
     </header>

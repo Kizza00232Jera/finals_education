@@ -1,11 +1,11 @@
 import React from 'react'
-import EventsHeader from '../features/events/EventsHeader'
+import EventHeader from '../features/events/EventHeader'
 import EventOverview from '../features/events/EventOverview'
 
 const EventPage = () => {
   return (
     <div>
-      <EventsHeader />
+      <EventHeader />
       <EventOverview/>
     </div>
   )
