@@ -6,6 +6,17 @@ describe('new employee', () => {
       cy.findByLabelText(/password:/i).type('admin');
       cy.findByRole('checkbox', {  name: /remember me/i}).check();
       cy.findByRole('button', {  name: /log in/i}).click();
+
+      //will check if he is logged on his acc, and if his role is correct
+      cy.get('[data-test="admintestid"]').should('be.visible')
+      cy.get('[data-test="managertestid"]').should('not.be.exist')
+      cy.get('[data-test="employeetestid"]').should('not.be.exist')
+      
+      //will check if he has budget 'rendered'
+      cy.findByText(/budget: /i).should('be.visible')
+      cy.get('[data-test="budgetvisible"]').should('be.visible')
+
+
       //will see if he has employees button in nav
       //will click on add employee on top right if visible
       //will get to new page and form for adding user

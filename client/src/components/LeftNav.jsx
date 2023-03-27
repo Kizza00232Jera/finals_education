@@ -12,7 +12,7 @@ import edulogo from '../img/edulogo.png'
 
 const LeftNav = () => {
 
-    const { employeeEmail, status, isManager, isAdmin } = useAuth()
+    const { employeeEmail, status, isManager, isAdmin, employeeBudget } = useAuth()
 
     const navigate = useNavigate()
 
@@ -24,6 +24,21 @@ const LeftNav = () => {
         if (isSuccess) navigate('/')
     }, [isSuccess, navigate])
 
+    //ADDING TEST ID IF BUDGET IS FOUND
+    let budgetidclass = null
+    if ({employeeBudget}) {
+        budgetidclass = "budgetvisible"
+    }
+
+    let statusidclass = null
+    if ({isManager}) {
+        statusidclass = "managertestid"
+    if ({isAdmin}) {
+            statusidclass = "admintestid"
+        }
+    } else {
+        statusidclass= "employeetestid"
+    }
 
 
     const logoutBtn = (
@@ -133,7 +148,8 @@ const LeftNav = () => {
             </div>
             <div className='bg-smoke-gray p-3 py-2 flex-none'>
             <p className='text-sm text-rich-gray'>Current User:{employeeEmail}</p>
-            <p className='text-sm font-bold text-black'>{status}</p>
+            <p data-test={statusidclass} className='text-sm font-bold text-black'>{status}</p>
+            <p data-test={budgetidclass} className='text-sm font-bold text-black'>Budget: {employeeBudget} €</p>
             </div>
         </footer>
         </div>
