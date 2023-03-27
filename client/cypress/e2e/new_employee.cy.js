@@ -1,10 +1,4 @@
-//login with non existing mark acc, fail
-//login with admin acc and create mark acc
-//login with mark acc - check features 
-//logout
-//login with admin and delete mark
-//check if mark is on list
-//try to log in with mark
+
 
 describe('new employee', () => {
   it('admin can add new employee', () => {
@@ -15,13 +9,13 @@ describe('new employee', () => {
       cy.findByRole('checkbox', {  name: /remember me/i}).check();
       cy.findByRole('button', {  name: /log in/i}).click();
 
-      //can he log out?
+      //is able to log out?
       cy.get('[data-testid="employeeBtn"]').should('be.visible')
-      //login btn shouldn't exist
+      //is not be able to log in
       cy.findByRole('button', {  name: /log in/i}).should('not.exist');
 
 
-      //will check his information
+      //is be able to see his information
       //admin status should exist
       cy.get('[data-testid="admintestid"]').should('be.visible')
       //manager and employee status shouldnt exist
@@ -39,6 +33,7 @@ describe('new employee', () => {
       //will be redirected to the add employee form
       cy.get('[data-testid="addemployeebtn"]').click();
 
+      //is not able to create employee until all fields are populated
       //create btn should not be clickable until form is filled
       cy.findByRole('button', {  name: /create/i}).should('have.class', 'bg-invisible-gray')
       cy.findByRole('button', {  name: /create/i}).should('not.have.class', 'bg-primary')
@@ -60,11 +55,19 @@ describe('new employee', () => {
       
       cy.findByRole('button', {  name: /create/i}).click();
 
+      //will be redirected to the page with list of employees
+      cy.url().should('eq', 'http://localhost:3000/dash/employees')
 
+      //should see employee that was just created
+      cy.findByText(/mark wellington/i).should('be.visible')
+
+      //should be able to go on that employees profile
+      cy.findByText(/mark wellington/i).click()
       
-
-      //will get to new page and form for adding user
-      //is not able to create it until all fields are populated
+      //employees profile should match the info that admin just entered
+      
+      
+      
       //create btn is enabled after fields are populated
       //after creating user, admin should be redirected to the employee list page
       //user should be added and visible on the employee list
@@ -80,5 +83,13 @@ describe('new employee', () => {
 //     //they will be restricted to that page
 //     //logout
 // })
+
+//login with non existing mark acc, fail
+//login with admin acc and create mark acc
+//login with mark acc - check features 
+//logout
+//login with admin and delete mark
+//check if mark is on list
+//try to log in with mark
 })
 
