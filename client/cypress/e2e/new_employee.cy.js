@@ -8,10 +8,12 @@ describe('new employee', () => {
       cy.findByRole('button', {  name: /log in/i}).click();
 
       //will check if he is logged on his acc, and if his role is correct
+      //admin status should exist
       cy.get('[data-test="admintestid"]').should('be.visible')
+      //manager and employee status shouldnt exist
       cy.get('[data-test="managertestid"]').should('not.be.exist')
       cy.get('[data-test="employeetestid"]').should('not.be.exist')
-      
+
       //will check if he has budget 'rendered'
       cy.findByText(/budget: /i).should('be.visible')
       cy.get('[data-test="budgetvisible"]').should('be.visible')
