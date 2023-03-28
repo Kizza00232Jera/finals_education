@@ -30,15 +30,13 @@ const LeftNav = () => {
         budgetidclass = "budgetvisible"
     }
 
-    let statusidclass = null
+    let statusidclass = "employeetestid"
     if ({isManager}) {
         statusidclass = "managertestid"
     if ({isAdmin}) {
             statusidclass = "admintestid"
         }
-    } else {
-        statusidclass= "employeetestid"
-    }
+    } 
 
 
     const logoutBtn = (

@@ -1,8 +1,11 @@
 import React from 'react'
 import { useGetEmployeesQuery } from './employeesApiSlice'
 import Employee from './Employee'
+import useAuth from '../../hooks/useAuth'
 
 const EmployeesList = () => {
+
+  const {  isManager, isAdmin } = useAuth()
 
   const {
     data: employees,
@@ -20,6 +23,13 @@ const EmployeesList = () => {
   )
 
   let content
+
+  let editBtn = null
+        if (isManager || isAdmin) {
+                editBtn = (
+                  <div className="p-2 m-2 basis-1/12">Edit</div>
+            )         
+        }
 
   if (isLoading) content = <p>Loading...</p>
 
@@ -41,7 +51,7 @@ const EmployeesList = () => {
             <div className="p-2 m-2 basis-2/12">Department</div>
             <div className="p-2 m-2 basis-3/12">Roles</div>
             <div className="p-2 m-2 basis-2/12">AvailableBudget</div>
-            <div className="p-2 m-2 basis-1/12">Edit</div>
+            {editBtn}
           </div>
         <div className='flex flex-col'>
           {tableContent}

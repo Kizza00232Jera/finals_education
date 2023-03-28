@@ -225,10 +225,10 @@ const EditEventForm = ({ event }) => {
 
 
                         <div className='w-80'>
-                            <label className="block" htmlFor="event-enddate">
+                            <label className="block" htmlFor="event-title">
                                 Title*</label>
                             <input
-                                id="event-enddate"
+                                id="event-title"
                                 name="startdate"
                                 type="text"
                                 autoComplete="off"
@@ -240,10 +240,10 @@ const EditEventForm = ({ event }) => {
 
                         </div>
                         <div className='w-80 '>
-                            <label className="block" htmlFor="event-enddate">
+                            <label className="block" htmlFor="event-deadline">
                                 Deadline*</label>
                             <input
-                                id="event-enddate"
+                                id="event-deadline"
                                 name="startdate"
                                 type="text"
                                 autoComplete="off"
@@ -309,11 +309,11 @@ const EditEventForm = ({ event }) => {
 
                         <div className='w-80'>
 
-                            <label className="form__label" htmlFor="event-deadline">
+                            <label className="form__label" htmlFor="event-enddate">
                                 End date*</label>
                             <input
-                                id="event-deadline"
-                                name="deadline"
+                                id="event-enddate"
+                                name="enddate"
                                 type="text"
                                 autoComplete="off"
                                 value={eventEndDate}
@@ -325,11 +325,11 @@ const EditEventForm = ({ event }) => {
 
                     </div>
                     <div className='w-80'>
-                        <label className="form__label" htmlFor="event-duration">
+                        <label className="form__label" htmlFor="event-lenght">
                             Lenght (in days)*</label>
                         <input
-                            id="event-duration"
-                            name="duration"
+                            id="event-lenght"
+                            name="lenght"
                             type="text"
                             autoComplete="off"
                             value={eventDuration}
@@ -364,7 +364,7 @@ const EditEventForm = ({ event }) => {
                             <label className="form__label" htmlFor="event-weblink">
                                 Web Link*</label>
                             <input
-                                id="event-price"
+                                id="event-weblink"
                                 name="weblink"
                                 type="text"
                                 autoComplete="off"

@@ -6,11 +6,14 @@ import { useSelector } from 'react-redux'
 import { selectEmployeeById } from './employeesApiSlice'
 
 import React from 'react'
+import useAuth from '../../hooks/useAuth'
 
 const Employee = ({ employeeId }) => {
     const employee = useSelector(state => selectEmployeeById(state, employeeId))
 
     const navigate = useNavigate()
+    const {  isManager, isAdmin } = useAuth()
+
 
     if (employee) {
         const handleEdit = () => navigate(`/dash/employees/${employeeId}`)
@@ -19,7 +22,21 @@ const Employee = ({ employeeId }) => {
 
         const employeeRolesString = employee.employeeRole.toString().replaceAll(',', ', ')
         const employeeDepartmentsString = employee.employeeDepartment.toString().replaceAll(',', ', ')
+
         
+        
+        let editBtn = null
+        if (isManager || isAdmin) {
+                editBtn = (
+                    <div className="p-3 m-3 basis-1/12">
+                    <button
+                        onClick={handleEdit}
+                        >
+                        <FontAwesomeIcon icon={faPenToSquare} />
+                    </button>
+                </div>
+            )         
+        }
 
         //console.log(employee)
         return (
@@ -31,13 +48,7 @@ const Employee = ({ employeeId }) => {
               <div className="p-3 m-3 basis-3/12 text-lg">{employeeRolesString}</div>
               <div className="p-3 m-3 basis-2/12 text-lg">{employee.employeeBudget} EUR</div>
 
-              <div className="p-3 m-3 basis-1/12">
-                  <button
-                      onClick={handleEdit}
-                      >
-                      <FontAwesomeIcon icon={faPenToSquare} />
-                  </button>
-              </div>
+              {editBtn}
           </div>
                           
         )

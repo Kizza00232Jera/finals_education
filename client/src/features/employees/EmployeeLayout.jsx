@@ -13,7 +13,7 @@ const EmployeeLayout = ({ employee }) => {
           <img src={contact} className="w-14 h-14" alt="logo" />
           <div className='flex flex-col gap-1'>
             <p className='font-medium text-black text-2xl'>{employee.employeeName} {employee.employeeSurname}</p>
-            <p className='text-sm text-rich-gray font-medium'>{employee.employeeEmail}</p>
+            <p data-testid={employee.employeeEmail} className='text-sm text-rich-gray font-medium'>{employee.employeeEmail}</p>
           </div>
         </div>
         <div className='flex py-5'>

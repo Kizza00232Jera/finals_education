@@ -37,7 +37,7 @@ function App() {
               {/* <Route element={<RequireAuth allowedRoles={[ROLES.Manager, ROLES.Admin]} />}>*/}  
                 <Route element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}>
                   <Route path="employees">
-                    <Route index element={<EmployeesPage />} />
+                    <Route index element={<EmployeesPage allowedRoles={[ROLES.Manager, ROLES.Admin]} />} />
                     <Route path=":id" element={<EditEmployee />} />
                     <Route path="new" element={<NewEducationPage />} />
                   <Route path="employee/:id" element={<EmployeePage />} />

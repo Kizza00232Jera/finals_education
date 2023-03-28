@@ -99,7 +99,7 @@ const NewEmployeeForm = () => {
 
     //checking if all of these are true
     //const canSave = [roles.length, validUsername, validPassword].every(Boolean) && !isLoading
-    const canSave = [employeeRole, validUsername, validPassword, validSurname, employeeEmail, employeeDepartment.length, employeeFund, employeeSpent, employeeBudget].every(Boolean) && !isLoading
+    const canSave = [employeeRole, validUsername, validPassword, validSurname, employeeEmail, employeeDepartment, employeeFund, employeeSpent, employeeBudget].every(Boolean) && !isLoading
 
     //calling add new employee mutation
     const onSaveEmployeeClicked = async (e) => {

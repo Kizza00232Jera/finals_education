@@ -34,12 +34,8 @@ const EventsList = () => {
 
       //this only shows my educations, but for admin it shows all educations
       //THIS IS HOW TO FILTER EVENTS BY DEPARTMENT AND TYPE
-    let filteredIds
-    if (isManager || isAdmin) {
-        filteredIds = [...ids]
-    } else {
-        filteredIds = ids.filter(eventId => entities[eventId].employeeEmail === employeeEmail)
-    }
+    let filteredIds = [...ids]
+    
 
     const tableContent = ids?.length && filteredIds.map(eventId => <Event key={eventId} eventId={eventId} />)
 
