@@ -28,8 +28,9 @@ const Employee = ({ employeeId }) => {
         let editBtn = null
         if (isManager || isAdmin) {
                 editBtn = (
-                    <div className="p-3 m-3 basis-1/12">
+                    <div  className="p-3 m-3 basis-1/12">
                     <button
+                        data-testid={employee.employeeEmail}
                         onClick={handleEdit}
                         >
                         <FontAwesomeIcon icon={faPenToSquare} />

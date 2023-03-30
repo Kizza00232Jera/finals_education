@@ -24,6 +24,7 @@ const Event = ({ eventId }) => {
         if (isManager || isAdmin) {
                 editBtn = (
                 <button
+                data-testid={event.eventTitle}
                 onClick={handleEdit}
                 >
                 <FontAwesomeIcon icon={faPenToSquare} />

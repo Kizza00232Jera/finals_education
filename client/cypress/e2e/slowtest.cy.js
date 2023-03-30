@@ -1,4 +1,4 @@
-describe("new employee", () => {
+describe("showcase", () => {
   it("will try to log in with not existing acc, and fail", () => {
     //login using Mark Wellington credentials
     cy.visit("http://localhost:3000/login");
@@ -36,7 +36,6 @@ describe("new employee", () => {
       cy.findByText(/budget: /i).should("be.visible");
       cy.get('[data-testid="budgetvisible"]').should("be.visible");
 
-      cy.wait(2000);
 
       //will click on employees
 
@@ -167,13 +166,12 @@ describe("new employee", () => {
     cy.findByText(/marko@gmail\.com/i).should("be.visible");
 
     //will go to my profile
-    cy.get('[data-testid="myEduBtn"]').click()
-    
-    //will see his information
-    cy.findByText(/mark wellington/i).should('be.visible')
-    //will not see any event created by him yet
-    screen.getByText(/event newly created by mark/i).should('not.exist')
+    cy.get('[data-testid="myEduBtn"]').click();
 
+    //will see his information
+    cy.findByText(/mark wellington/i).should("be.visible");
+    //will not see any event created by him yet
+    cy.findByText(/event newly created by mark/i).should("not.exist");
 
     //will go to list of educations
     cy.get('[data-testid="edulistbtn"]').click();
@@ -196,7 +194,7 @@ describe("new employee", () => {
     cy.findByRole("link", { name: /add event/i }).click();
 
     //before creating the event, this event should not be there
-    cy.findByText(/event newly created by mark/i).should('not.exist')
+    cy.findByText(/event newly created by mark/i).should("not.exist");
 
     //filling form
     cy.get("#event-title").type("Event newly created by Mark");
@@ -218,53 +216,94 @@ describe("new employee", () => {
     //should be redirected to the events list page
     cy.url().should("eq", "http://localhost:3000/dash/events");
     //is able to see his education after its created
-    cy.findByText(/event newly created by mark/i).should('be.visible')
-    cy.findByText(/event newly created by mark/i).click()
+    cy.findByText(/event newly created by mark/i).should("be.visible");
+    cy.findByText(/event newly created by mark/i).click();
 
     //now that event should also be under his profile
-    cy.findByText(/event newly created by mark/i).should('be.visible')
+    cy.findByText(/event newly created by mark/i).should("be.visible");
     //clicks on his event
-    cy.findByText(/event newly created by mark/i).click()
+    cy.findByText(/event newly created by mark/i).click();
     //can see same information about the event as he typed himself
-    cy.findByRole('heading', {  name: /event newly created by mark/i}).should('be.visible')
-    cy.findByText(/20\.04\.2023\./i).should('be.visible')
-    cy.findByText(/copenhagen 20/i).should('be.visible')
+    cy.findByRole("heading", { name: /event newly created by mark/i }).should(
+      "be.visible"
+    );
+    cy.findByText(/20\.04\.2023\./i).should("be.visible");
+    cy.findByText(/copenhagen 20/i).should("be.visible");
 
     //after looking info about the event
     //he logs out
     cy.get('[data-testid="logoutbtn"]').click();
+  });
+
+  it("admin should see newly created event, admin should be able to edit event and user, and admin should be able to delete that user and that event", () => {
+    //logs in
+    //login with admin acc
+    cy.visit("http://localhost:3000/login");
+    cy.findByRole("textbox", { name: /email:/i }).type("admin@gmail.com");
+    cy.findByLabelText(/password:/i).type("admin");
+    cy.findByRole("checkbox", { name: /remember me/i }).check();
+    cy.findByRole("button", { name: /log in/i }).click();
+
+    //is able to log out?
+    cy.get('[data-testid="employeeBtn"]').should("be.visible");
+    //is not be able to log in
+    cy.findByRole("button", { name: /log in/i }).should("not.exist");
+    //goes to the events
+    cy.get('[data-testid="edulistbtn"]').click();
+    //finds newly created event
+    cy.findByText(/event newly created by mark/i).should("be.visible");
+    //clicks on edit
+    cy.get('[data-testid="Event newly created by Mark"]').click();
+    //edits it
+    cy.get("#event-title").type("Edited");
+    cy.findByRole("button", { name: /save/i }).click();
+    //gets redirected to the events list page, and finds updated event
+    cy.url().should("eq", "http://localhost:3000/dash/events");
+    cy.findByText(/event newly created by markedited/i).should("be.visible");
+    cy.get('[data-testid="Event newly created by MarkEdited"]').click();
+    cy.findByRole('button', {  name: /delete/i}).click()
+    //after deleting event he should be redirected to event list page
+    cy.url().should("eq", "http://localhost:3000/dash/events");
+    //event shouldnt exist anymore
+    cy.findByText(/event newly created by markedited/i).should("not.exist");
+    //goes to employee list and looks for mark
+    cy.get('[data-testid="employeeBtn"]').click();
+    cy.findByText(/mark wellington/i).should("be.visible");
+
+    //clicks on edit
+    cy.get('[data-testid="markwellington@gmail.com"]').click();
+    //updates some info
+    cy.get("#name").type("Will");
+    cy.findByRole("button", { name: /save/i }).click();
+    //check if its updated
+    cy.url().should("eq", "http://localhost:3000/dash/employees");
+    cy.findByText(/markwill wellington/i).should("be.visible");
+
+    //deletes him
+    cy.get('[data-testid="markwellington@gmail.com"]').click();
+    cy.findByRole('button', {  name: /delete/i}).click()
+
+    //check the list to find out if mark still exists
+    cy.findByText(/markwill wellington/i).should("not.exist");
+
+    //log out
+    cy.get('[data-testid="logoutbtn"]').click();
+
 
   });
 
-  it('admin should see newly created event, and admin should be able to delete that user and that event', () => {
-    //logs in
-    //goes to the events
-    //finds newly created event
-    //clicks on edit
-    //deletes it
-    //goes on employee list
-    //finds mark
-    //deletes mark
-    //checks event list to find out if marks event is stil on the list
-    //checks employee list to find out if mark still exists
-    //logs out
+  it("will try to log in with  deleted acc mark and will fail", () => {
+    //login using Mark Wellington credentials
+    cy.visit("http://localhost:3000/login");
+    cy.findByRole("textbox", { name: /email:/i }).type(
+      "markwellington@gmail.com"
+    );
+    cy.findByLabelText(/password:/i).type("password");
+    cy.findByRole("checkbox", { name: /remember me/i }).check();
+    cy.findByRole("button", { name: /log in/i }).click();
+
+    //should throw unauthorized error
+    cy.findByText(/unauthorized/i).should("be.visible");
   })
 
-  //   it('employees cant add new employee', () => {
-  //     //login with employee acc
-  //     //will see if he has employees button in nav
-  //     //will click on employees list from nav
-  //     //add employee btn shouldnt be visible, but only list
-  //     //will try to go to link where they can add employees
-  //     //they will be restricted to that page
-  //     //logout
-  // })
-
-  //login with non existing mark acc, fail
-  //login with admin acc and create mark acc
-  //login with mark acc - check features
-  //logout
-  //login with admin and delete mark
-  //check if mark is on list
-  //try to log in with mark
 });
