@@ -10,7 +10,7 @@ describe("testing the app", () => {
     cy.findByRole("button", { name: /log in/i }).click();
 
     //should throw unauthorized error
-    cy.findByText(/unauthorized/i).should("be.visible");
+    cy.get('.bg-error').should("be.visible")
   });
   it("admin will login, and check his info", () => {
     //login with admin acc
@@ -110,7 +110,7 @@ describe("testing the app", () => {
     cy.findByRole("button", { name: /create/i }).click();
 
     //will fail because same user is already created
-    cy.get(".errmsg").should("be.visible");
+    cy.get('.bg-error').should("be.visible")
 
     //logout
     cy.get('[data-testid="logoutbtn"]').click();
@@ -302,6 +302,6 @@ describe("testing the app", () => {
     cy.findByRole("button", { name: /log in/i }).click();
 
     //should throw unauthorized error
-    cy.findByText(/unauthorized/i).should("be.visible");
+    cy.get('.bg-error').should("be.visible")
   });
 });

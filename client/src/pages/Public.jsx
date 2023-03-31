@@ -77,7 +77,7 @@ const Login = () => {
             <p className='text-base'>Please enter your details</p>
         </header>
         <main >
-            <p ref={errRef} aria-live="assertive">{errMsg}</p>
+            <p className='bg-error' ref={errRef} aria-live="assertive">{errMsg}</p>
             <form  onSubmit={handleSubmit}>
                 <label className='text-sm font-bold block' htmlFor="email">Email:</label>
                 <input

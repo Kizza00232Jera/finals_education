@@ -139,7 +139,6 @@ const NewEmployeeForm = () => {
 
     const content = (
         <>
-            <p className={errClass}>{error?.data?.message}</p>
             <div className='mb-4'>
                     <div className='border-b border-b-soft-gray '>
                         <header className='h-28 flex flex-wrap content-center px-20 bg-white'>
@@ -282,6 +281,7 @@ const NewEmployeeForm = () => {
                         onChange={onBudgetChanged}
                     />
                 </div>
+            <p className="bg-error">{error?.data?.message}</p>
                 <div className="mt-5">
                     <button
                         className={saveClass}
